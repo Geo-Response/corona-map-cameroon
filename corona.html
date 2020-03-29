@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1,shrink-to-fit=no"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1,shrink-to-fit=no" />
 
     <title>CORONA MAP CAMEROON</title>
     <link rel="stylesheet" href="src/css/styles.css" />
@@ -30,576 +28,599 @@
     <script src="src/plugins/leaflet.awesome-markers.min.js"></script>
     <script src="src/plugins/leaflet.markercluster.js"></script>
     <script src="src/js/bootstrap.min.js"></script>
-  </head>
+</head>
 
-  <body>
+<body>
     <!-- Navigation bar top(titlte)+ images-->
-    <img
-      id="navimg1"
-      src="/Working/Carte des repartition des cas/corona/img/corona.png"
-      alt=""
-    />
-    <img
-      id="navimg2"
-      src="/Working/Carte des repartition des cas/corona/img/corona.png"
-      alt=""
-    />
+    <img id="navimg1" src="img/corona.png" alt="" />
+    <img id="navimg2" src="img/corona.png" alt="" />
     <nav class="navbar" id="navbartop">
-      <a class="navbar-brand mx-auto" href="#"
-        ><h3>
-          Répartition des Cas de COVID-19
-        </h3></a
-      >
+        <a class="navbar-brand mx-auto" href="#">
+            <h3>
+                Répartition des Cas de COVID-19
+            </h3>
+        </a>
     </nav>
 
     <!-- <div id="sidebar" class="col-sm-2"> </div> -->
     <div class="container-fluid">
-      <div class="row">
-        <nav id="sidebarRight" class="col-sm-3 d-none d-sm-block bg-light">
-          <div class="row sidebar-header ">
-            <div class="division  col-sm-4 threeboxes">
-              <div class="row tot-fig">
-                <div id="case" class="case col-sm-12 casetot">
-                  00
-                </div>
-                <div class="col-sm-12">
-                  <h6>Cas</h6>
-                </div>
-              </div>
-            </div>
+        <div class="row">
+            <nav id="sidebarRight" class="col-sm-3 d-none d-sm-block bg-light">
+                <div class="row sidebar-header ">
+                    <div class="division  col-sm-4 threeboxes">
+                        <div class="row tot-fig">
+                            <div id="case" class="case col-sm-12 casetot">
+                                00
+                            </div>
+                            <div class="col-sm-12">
+                                <h6>Cas</h6>
+                            </div>
+                        </div>
+                    </div>
 
-            <div class="division col-sm-4 threeboxes">
-              <div class="row tot-fig">
-                <div id="victim" class="victim col-sm-12 victimtot">
-                  00
+                    <div class="division col-sm-4 threeboxes">
+                        <div class="row tot-fig">
+                            <div id="victim" class="victim col-sm-12 victimtot">
+                                00
+                            </div>
+                            <div class="col-sm-12">
+                                <h6>Victimes</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="division  col-sm-4 threeboxes">
+                        <div class="row tot-fig">
+                            <div id="recover" class="recover col-sm-12 recovertot">
+                                00
+                            </div>
+                            <div class="col-sm-12">
+                                <h6>
+                                    Rétablis
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-sm-12">
-                  <h6>Victimes</h6>
-                </div>
-              </div>
-            </div>
-            <div class="division  col-sm-4 threeboxes">
-              <div class="row tot-fig">
-                <div id="recover" class="recover col-sm-12 recovertot">
-                  00
-                </div>
-                <div class="col-sm-12">
-                  <h6>
-                    Rétablis
-                  </h6>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div id="accordion">
-            <div class="card">
-              <div class="card-header">
-                <a class="card-link" data-toggle="collapse" href="#centre">
-                  CENTRE:
-                </a>
-                <span id="C_centre" class="case"> 00</span>
-                <span id="V_centre" class="victim"> 00</span>
-                <span id="R_centre" class="recover"> 00</span>
-              </div>
-              <div id="centre" class="collapse show" data-parent="#accordion">
-                <div id="table_centre" class="card-body">
-                  <ul class="nav flex-column sub-menu">
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">Chargement des départements affectés ...</a>
-                  </ul>
-                </div>
-              </div>
-            </div>
+                <div id="accordion">
+                    <div class="card">
+                        <div class="card-header">
+                            <a class="card-link" data-toggle="collapse" href="#centre">
+                                CENTRE:
+                            </a>
+                            <span id="C_centre" class="case"> 00</span>
+                            <span id="V_centre" class="victim"> 00</span>
+                            <span id="R_centre" class="recover"> 00</span>
+                        </div>
+                        <div id="centre" class="collapse show" data-parent="#accordion">
+                            <div id="table_centre" class="card-body">
+                                <ul class="nav flex-column sub-menu">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Chargement des départements affectés ...</a>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
 
-            <div class="card">
-              <div class="card-header">
-                <a class="card-link" data-toggle="collapse" href="#littoral">
-                  LITTORAL:
-                </a>
-                <span id="C_littoral" class="case"> 00</span>
-                <span id="V_littoral" class="victim"> 00</span>
-                <span id="R_littoral" class="recover"> 00</span>
-              </div>
-              <div id="littoral" class="collapse show" data-parent="#accordion">
-                <div id="table_littoral" class="card-body">
-                  <ul class="nav flex-column sub-menu">
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">Chargement des départements affectés ...</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <a class="card-link" data-toggle="collapse" href="#littoral">
+                                LITTORAL:
+                            </a>
+                            <span id="C_littoral" class="case"> 00</span>
+                            <span id="V_littoral" class="victim"> 00</span>
+                            <span id="R_littoral" class="recover"> 00</span>
+                        </div>
+                        <div id="littoral" class="collapse show" data-parent="#accordion">
+                            <div id="table_littoral" class="card-body">
+                                <ul class="nav flex-column sub-menu">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Chargement des départements affectés ...</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
 
-            <div class="card">
-              <div class="card-header">
-                <a class="card-link" data-toggle="collapse" href="#ouest">
-                  OUEST:
-                </a>
-                <span id="C_ouest" class="case"> 00</span>
-                <span id="V_ouest" class="victim"> 00</span>
-                <span id="R_ouest" class="recover"> 00</span>
-              </div>
-              <div id="ouest" class="collapse show" data-parent="#accordion">
-                <div id="table_ouest" class="card-body">
-                  Chargement des départements affectés ...
-                </div>
-              </div>
-            </div>
-          </div>
-        </nav>
+                    <div class="card">
+                        <div class="card-header">
+                            <a class="card-link" data-toggle="collapse" href="#ouest">
+                                OUEST:
+                            </a>
+                            <span id="C_ouest" class="case"> 00</span>
+                            <span id="V_ouest" class="victim"> 00</span>
+                            <span id="R_ouest" class="recover"> 00</span>
+                        </div>
+                        <div id="ouest" class="collapse show" data-parent="#accordion">
+                            <div id="table_ouest" class="card-body">
+                                Chargement des départements affectés ...
+                            </div>
+                        </div>
+                    </div>
 
-        <div id="mapdiv" class="col-sm-9 "></div>
-      </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <a class="card-link" data-toggle="collapse" href="#sudouest">
+                                SUD-OUEST:
+                            </a>
+                            <span id="C_sudouest" class="case"> 00</span>
+                            <span id="V_sudouest" class="victim"> 00</span>
+                            <span id="R_sudouest" class="recover"> 00</span>
+                        </div>
+                        <div id="sudouest" class="collapse show" data-parent="#accordion">
+                            <div id="table_sudouest" class="card-body">
+                                Chargement des départements affectés ...
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </nav>
+
+            <div id="mapdiv" class="col-sm-9 "></div>
+        </div>
     </div>
     <div class="footer d-flex justify-content-center">
-      copy right - Mars 2020
+        copy right - Mars 2020
     </div>
 
     <script>
-      var mymap;
-      var lyrOSM;
-      var miniMap;
-      var ctlLayers;
-      var bounds;
-      var southWest_bnd;
-      var northEast_bnd;
-      var objBasemaps;
-      var objOverlays;
-      var lyrImageryEsri;
-      var lyrOSM2;
-      var lyrImageryEsri_gray;
-      var lyrImageryGoogle;
-      var lyrMarkerCluster;
-      var ctlsidebar;
-      var ctleasybutton;
+        var mymap;
+        var lyrOSM;
+        var miniMap;
+        var ctlLayers;
+        var bounds;
+        var southWest_bnd;
+        var northEast_bnd;
+        var objBasemaps;
+        var objOverlays;
+        var lyrImageryEsri;
+        var lyrOSM2;
+        var lyrImageryEsri_gray;
+        var lyrImageryGoogle;
+        var lyrMarkerCluster;
+        var ctlsidebar;
+        var ctleasybutton;
 
-      //couches vecteurs
-      var lyrregion;
-      var lyrclinique;
-      var lyrquartier;
-      var lyrhotel;
-      var lyrhopitaux;
-      var lyrpolice;
-      var lyrpharmacie;
+        //couches vecteurs
+        var lyrregion;
+        var lyrclinique;
+        var lyrquartier;
+        var lyrhotel;
+        var lyrhopitaux;
+        var lyrpolice;
+        var lyrpharmacie;
 
-      //icones marqueurs
-      var icnLAMclinique;
-      var icnLAMhotel;
-      var icnLAMhopitaux;
-      var icnLAMpolice;
-      var icnLAMpharmacie;
+        //icones marqueurs
+        var icnLAMclinique;
+        var icnLAMhotel;
+        var icnLAMhopitaux;
+        var icnLAMpolice;
+        var icnLAMpharmacie;
 
-      //styles couches polygones
-      var Stylequartier = {
-        color: "black",
-        weight: 3,
-        fillOpacity: 0
-      };
-
-    var Styleregion = {
-                "color": "#845500",
-                "weight":3,
-                "fillOpacity": 0.1,
-                "fillColor": "#845500"
+        //styles couches polygones
+        var Stylequartier = {
+            color: "black",
+            weight: 3,
+            fillOpacity: 0
         };
-        
-    var Styleregion_case = {
-                "color": "red",
-                "weight":3,
-                "fillOpacity": 0.1,
-                "fillColor": "red"
+
+        var Styleregion = {
+            "color": "#845500",
+            "weight": 3,
+            "fillOpacity": 0.1,
+            "fillColor": "#845500"
         };
-        
-      $(document).ready(function() {
-        //non cartographique
-        //Mise à jour données régions
 
-        $.getJSON("centre_sum.php", function(data) {
-          var datas = [];
-          $.each(data, function(key, val) {
-            datas.push(val);
-          });
-          $("#C_centre").html(datas[0]);
-          $("#V_centre").html(datas[1]);
-          $("#R_centre").html(datas[2]);
-        });
+        var Styleregion_case = {
+            "color": "red",
+            "weight": 3,
+            "fillOpacity": 0.1,
+            "fillColor": "red"
+        };
 
-        $.getJSON("littoral_sum.php", function(data) {
-          var datas = [];
-          $.each(data, function(key, val) {
-            datas.push(val);
-          });
-          $("#C_littoral").html(datas[0]);
-          $("#V_littoral").html(datas[1]);
-          $("#R_littoral").html(datas[2]);
-        });
+        $(document).ready(function() {
+            //non cartographique
+            //Mise à jour données régions
 
-        $.getJSON("ouest_sum.php", function(data) {
-          var datas = [];
-          $.each(data, function(key, val) {
-            datas.push(val);
-          });
-          $("#C_ouest").html(datas[0]);
-          $("#V_ouest").html(datas[1]);
-          $("#R_ouest").html(datas[2]);
-        });
+            $.getJSON("centre_sum.php", function(data) {
+                var datas = [];
+                $.each(data, function(key, val) {
+                    datas.push(val);
+                });
+                $("#C_centre").html(datas[0]);
+                $("#V_centre").html(datas[1]);
+                $("#R_centre").html(datas[2]);
+            });
 
-        $.getJSON("region_sum.php", function(data) {
-          var datas = [];
-          $.each(data, function(key, val) {
-            datas.push(val);
-          });
-          $("#case").html(datas[0]);
-          $("#victim").html(datas[1]);
-          $("#recover").html(datas[2]);
-          console.log(datas);
-        });
+            $.getJSON("littoral_sum.php", function(data) {
+                var datas = [];
+                $.each(data, function(key, val) {
+                    datas.push(val);
+                });
+                $("#C_littoral").html(datas[0]);
+                $("#V_littoral").html(datas[1]);
+                $("#R_littoral").html(datas[2]);
+            });
 
-    //Mise à jour tableau données departement
-      function table_centre(){
-                    $.ajax({
-                       url:'table_centre.php',
-                       type:'POST',
-                       success:function(response){
-                          $("#table_centre").html(response)  
-                           
-                         }
-                   });
-                }; 
-            
+            $.getJSON("ouest_sum.php", function(data) {
+                var datas = [];
+                $.each(data, function(key, val) {
+                    datas.push(val);
+                });
+                $("#C_ouest").html(datas[0]);
+                $("#V_ouest").html(datas[1]);
+                $("#R_ouest").html(datas[2]);
+            });
+
+            $.getJSON("sudouest_sum.php", function(data) {
+                var datas = [];
+                $.each(data, function(key, val) {
+                    datas.push(val);
+                });
+                $("#C_sudouest").html(datas[0]);
+                $("#V_sudouest").html(datas[1]);
+                $("#R_sudouest").html(datas[2]);
+            });
+
+            $.getJSON("region_sum.php", function(data) {
+                var datas = [];
+                $.each(data, function(key, val) {
+                    datas.push(val);
+                });
+                $("#case").html(datas[0]);
+                $("#victim").html(datas[1]);
+                $("#recover").html(datas[2]);
+                console.log(datas);
+            });
+
+            //Mise à jour tableau données departement
+            function table_centre() {
+                $.ajax({
+                    url: 'table_centre.php',
+                    type: 'POST',
+                    success: function(response) {
+                        $("#table_centre").html(response)
+
+                    }
+                });
+            };
+
             table_centre();
-            
-         function table_littoral(){
-                    $.ajax({
-                       url:'table_littoral.php',
-                       type:'POST',
-                       success:function(response){
-                          $("#table_littoral").html(response)  
-                           
-                         }
-                   });
-                }; 
-            
+
+            function table_littoral() {
+                $.ajax({
+                    url: 'table_littoral.php',
+                    type: 'POST',
+                    success: function(response) {
+                        $("#table_littoral").html(response)
+
+                    }
+                });
+            };
+
             table_littoral();
-            
-             function table_ouest(){
-                    $.ajax({
-                       url:'table_ouest.php',
-                       type:'POST',
-                       success:function(response){
-                          $("#table_ouest").html(response)  
-                           
-                         }
-                   });
-                }; 
-       
-           table_ouest();
-          
-          
-        //cartographique
-        southWest_bnd = L.latLng(1, 17);
-        northEast_bnd = L.latLng(16, 8);
-        bounds = L.latLngBounds(southWest_bnd, northEast_bnd);
 
-          mymap = L.map('mapdiv',{
-              center:[5.659719, 13.066939], 
-              zoom:6,
-              maxZoom:19,
-              minZoom:5,
-              maxBounds: bounds
-          });
-          
-            
-        lyrOSM = L.tileLayer.provider("OpenStreetMap.Mapnik");
-        lyrImageryEsri = L.tileLayer.provider("Esri.WorldImagery");
-        lyrOSM2 = L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}.png");
-        lyrImageryGoogle = L.tileLayer(
-          "http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}",
-          {
-            maxzoom: 20,
-            subdomains: ["mt0", "mt1", "mt2", "mt3"]
-          }
-        );
-        lyrImageryEsri_gray = L.tileLayer(
-          "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}",
-          {
-            attribution: "Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ",
-            maxZoom: 20
-          }
-        );
+            function table_ouest() {
+                $.ajax({
+                    url: 'table_ouest.php',
+                    type: 'POST',
+                    success: function(response) {
+                        $("#table_ouest").html(response)
 
-        miniMapCtl = new L.Control.MiniMap(lyrOSM2).addTo(mymap);
+                    }
+                });
+            };
 
-        objBasemaps = {
-          "Open Street Maps": lyrOSM,
-          "Imagerie Satelitte Esri": lyrImageryEsri,
-          "Esri gray": lyrImageryEsri_gray,
-          "Imagerie Satelitte google": lyrImageryGoogle
-        };
+            table_ouest();
 
-        objOverlays = {};
+            function table_sudouest() {
+                $.ajax({
+                    url: 'table_sudouest.php',
+                    type: 'POST',
+                    success: function(response) {
+                        $("#table_sudouest").html(response)
 
-        ctlLayers = L.control.layers(objBasemaps, objOverlays).addTo(mymap);
+                    }
+                });
+            };
 
-        //Marker icon
-        icnLAMclinique = L.AwesomeMarkers.icon({
-          icon: "glyphicon-plus-sign",
-          markerColor: "red",
-          iconColor: "white",
-          prefix: "glyphicon"
-        });
+            table_sudouest();
 
-        icnLAMhotel = L.AwesomeMarkers.icon({
-          icon: "hotel",
-          markerColor: "blue",
-          iconColor: "red",
-          prefix: "fa"
-        });
 
-        icnLAMpolice = L.AwesomeMarkers.icon({
-          icon: "glyphicon-star",
-          markerColor: "orange",
-          iconColor: "red",
-          prefix: "glyphicon"
-        });
+            //cartographique
+            southWest_bnd = L.latLng(1, 17);
+            northEast_bnd = L.latLng(16, 8);
+            bounds = L.latLngBounds(southWest_bnd, northEast_bnd);
 
-        icnLAMhopitaux = L.AwesomeMarkers.icon({
-          icon: "h-square",
-          markerColor: "blue",
-          iconColor: "white",
-          prefix: "fa"
-        });
+            mymap = L.map('mapdiv', {
+                center: [5.659719, 13.066939],
+                zoom: 6,
+                maxZoom: 19,
+                minZoom: 5,
+                maxBounds: bounds
+            });
 
-        icnLAMpharmacie = L.AwesomeMarkers.icon({
-          icon: "glyphicon-plus",
-          markerColor: "white",
-          iconColor: "green",
-          prefix: "glyphicon"
-        });
 
-        //cluster
-        lyrMarkerCluster = L.markerClusterGroup({
-          disableClusteringAtZoom: 17
-        });
-
-        function refreshclinique() {
-          $.ajax({
-            url: "load_clinique.php",
-            type: "POST",
-            success: function(response) {
-              if (lyrclinique) {
-                mymap.removeLayer(lyrclinique);
-              }
-              lyrclinique = L.geoJSON(JSON.parse(response), {
-                pointToLayer: function(feature, latlng) {
-                  return L.marker(latlng, { icon: icnLAMclinique });
-                },
-                onEachFeature: function(feature, layer) {
-                  var strbuildingInfo =
-                    "<h4 style='color: brown;text-align:center;text-decoration: underline;font-weight:bold'>INFORMATIONS</h4>";
-                  strbuildingInfo +=
-                    "<h4> <span style='text-decoration: underline;font-weight:bold'>Nom :</span> <span style='color:blue'>" +
-                    feature.properties.name +
-                    " </span> </h4>";
-                  //strbuildingInfo += "<h4> <span style='text-decoration: underline;font-weight:bold'>Type :</span> <span style='color:blue'>"+feature.properties.name+" </span> </h4> </br>"
-
-                  //strbuildingInfo += "<img src='img/1.jpg' width =100px'>"
-                  layer.bindPopup(String(strbuildingInfo));
+            lyrOSM = L.tileLayer.provider("OpenStreetMap.Mapnik");
+            lyrImageryEsri = L.tileLayer.provider("Esri.WorldImagery");
+            lyrOSM2 = L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}.png");
+            lyrImageryGoogle = L.tileLayer(
+                "http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}", {
+                    maxzoom: 20,
+                    subdomains: ["mt0", "mt1", "mt2", "mt3"]
                 }
-              });
-              lyrMarkerCluster.addLayer(lyrclinique);
-            }
-          });
-        }
-
-        function refreshhotel() {
-          $.ajax({
-            url: "load_hotel.php",
-            type: "POST",
-            success: function(response) {
-              if (lyrhotel) {
-                mymap.removeLayer(lyrhotel);
-              }
-              lyrhotel = L.geoJSON(JSON.parse(response), {
-                pointToLayer: function(feature, latlng) {
-                  return L.marker(latlng, { icon: icnLAMhotel });
-                },
-                onEachFeature: function(feature, layer) {
-                  var strbuildingInfo =
-                    "<h4 style='color: brown;text-align:center;text-decoration: underline;font-weight:bold'>INFORMATIONS</h4>";
-                  strbuildingInfo +=
-                    "<h4> <span style='text-decoration: underline;font-weight:bold'>Nom :</span> <span style='color:blue'>" +
-                    feature.properties.name +
-                    " </span> </h4>";
-                  //strbuildingInfo += "<h4> <span style='text-decoration: underline;font-weight:bold'>Type :</span> <span style='color:blue'>"+feature.properties.name+" </span> </h4> </br>"
-
-                  //strbuildingInfo += "<img src='img/1.jpg' width =100px'>"
-                  layer.bindPopup(String(strbuildingInfo));
+            );
+            lyrImageryEsri_gray = L.tileLayer(
+                "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}", {
+                    attribution: "Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ",
+                    maxZoom: 20
                 }
-              });
-              lyrMarkerCluster.addLayer(lyrhotel);
-            }
-          });
-        }
+            );
 
-        function refreshpharmacie() {
-          $.ajax({
-            url: "load_pharmacie.php",
-            type: "POST",
-            success: function(response) {
-              if (lyrpharmacie) {
-                mymap.removeLayer(lyrpharmacie);
-              }
-              lyrpharmacie = L.geoJSON(JSON.parse(response), {
-                pointToLayer: function(feature, latlng) {
-                  return L.marker(latlng, { icon: icnLAMpharmacie });
-                },
+            miniMapCtl = new L.Control.MiniMap(lyrOSM2, {
+                toggleDisplay: true
+            }).addTo(mymap);
 
-                onEachFeature: function(feature, layer) {
-                  var strbuildingInfo =
-                    "<h4 style='color: brown;text-align:center;text-decoration: underline;font-weight:bold'>INFORMATIONS</h4>";
-                  strbuildingInfo +=
-                    "<h4> <span style='text-decoration: underline;font-weight:bold'>Nom :</span> <span style='color:blue'>" +
-                    feature.properties.name +
-                    " </span> </h4>";
-                  //strbuildingInfo += "<h4> <span style='text-decoration: underline;font-weight:bold'>Type :</span> <span style='color:blue'>"+feature.properties.name+" </span> </h4> </br>"
+            objBasemaps = {
+                "Open Street Maps": lyrOSM,
+                "Imagerie Satelitte Esri": lyrImageryEsri,
+                "Esri gray": lyrImageryEsri_gray,
+                "Imagerie Satelitte google": lyrImageryGoogle
+            };
 
-                  //strbuildingInfo += "<img src='img/1.jpg' width =100px'>"
-                  layer.bindPopup(String(strbuildingInfo));
-                }
-              });
-              lyrMarkerCluster.addLayer(lyrpharmacie);
-            }
-          });
-        }
+            objOverlays = {};
 
-        function refreshphoptiaux() {
-          $.ajax({
-            url: "load_hopitaux.php",
-            type: "POST",
-            success: function(response) {
-              if (lyrhopitaux) {
-                mymap.removeLayer(lyrhopitaux);
-              }
-              lyrhopitaux = L.geoJSON(JSON.parse(response), {
-                pointToLayer: function(feature, latlng) {
-                  return L.marker(latlng, { icon: icnLAMhopitaux });
-                },
-                onEachFeature: function(feature, layer) {
-                  var strbuildingInfo =
-                    "<h4 style='color: brown;text-align:center;text-decoration: underline;font-weight:bold'>INFORMATIONS</h4>";
-                  strbuildingInfo +=
-                    "<h4> <span style='text-decoration: underline;font-weight:bold'>Nom :</span> <span style='color:blue'>" +
-                    feature.properties.name +
-                    " </span> </h4> ";
-                  //strbuildingInfo += "<h4> <span style='text-decoration: underline;font-weight:bold'>Type :</span> <span style='color:blue'>"+feature.properties.name+" </span> </h4> </br>"
+            ctlLayers = L.control.layers(objBasemaps, objOverlays, {
+                position: 'bottomleft'
+            }).addTo(mymap);
 
-                  //strbuildingInfo += "<img src='img/1.jpg' width =100px'>"
-                  layer.bindPopup(String(strbuildingInfo));
-                }
-              });
-              lyrMarkerCluster.addLayer(lyrhopitaux);
-            }
-          });
-        }
+            //Marker icon
+            icnLAMclinique = L.AwesomeMarkers.icon({
+                icon: "glyphicon-plus-sign",
+                markerColor: "red",
+                iconColor: "white",
+                prefix: "glyphicon"
+            });
 
-        function refreshpolice() {
-          $.ajax({
-            url: "load_police.php",
-            type: "POST",
-            success: function(response) {
-              if (lyrpolice) {
-                mymap.removeLayer(lyrpolice);
-              }
-              lyrpolice = L.geoJSON(JSON.parse(response), {
-                pointToLayer: function(feature, latlng) {
-                  return L.marker(latlng, { icon: icnLAMpolice });
-                },
+            icnLAMhotel = L.AwesomeMarkers.icon({
+                icon: "hotel",
+                markerColor: "blue",
+                iconColor: "red",
+                prefix: "fa"
+            });
 
-                onEachFeature: function(feature, layer) {
-                  var strbuildingInfo =
-                    "<h4 style='color: brown;text-align:center;text-decoration: underline;font-weight:bold'>INFORMATIONS</h4>";
-                  strbuildingInfo +=
-                    "<h4> <span style='text-decoration: underline;font-weight:bold'>Nom :</span> <span style='color:blue'>" +
-                    feature.properties.name +
-                    " </span> </h4> ";
-                  //strbuildingInfo += "<h4> <span style='text-decoration: underline;font-weight:bold'>Type :</span> <span style='color:blue'>"+feature.properties.name+" </span> </h4> </br>"
+            icnLAMpolice = L.AwesomeMarkers.icon({
+                icon: "glyphicon-star",
+                markerColor: "orange",
+                iconColor: "red",
+                prefix: "glyphicon"
+            });
 
-                  //strbuildingInfo += "<img src='img/1.jpg' width =100px'>"
-                  layer.bindPopup(String(strbuildingInfo));
-                }
-              });
-              lyrMarkerCluster.addLayer(lyrpolice);
-              lyrMarkerCluster.addTo(mymap);
-            }
-          });
-        }
+            icnLAMhopitaux = L.AwesomeMarkers.icon({
+                icon: "h-square",
+                markerColor: "blue",
+                iconColor: "white",
+                prefix: "fa"
+            });
 
-//        function refreshquartier() {
-//          $.ajax({
-//            url: "load_quartier.php",
-//            type: "POST",
-//            success: function(response) {
-//              if (lyrquartier) {
-//                mymap.removeLayer(lyrquartier);
-//              }
-//              lyrquartier = L.geoJSON(JSON.parse(response), {
-//                style: Stylequartier
-//              });
-//              lyrquartier.addTo(mymap);
-//            }
-//          });
-//        }
+            icnLAMpharmacie = L.AwesomeMarkers.icon({
+                icon: "glyphicon-plus",
+                markerColor: "white",
+                iconColor: "green",
+                prefix: "glyphicon"
+            });
 
-      function refreshregion(){
-            $.ajax({
-           url:'load_region.php',
-           type:'POST',
-           success:function(response){
-            if (lyrregion) {mymap.removeLayer(lyrregion)};
-               lyrregion=L.geoJSON(JSON.parse(response),{
-            style:  function(feature,layer){
-                if (feature.properties.nombre_total_de_cas>=1){
-                            return Styleregion_case;
-                        } else {
-                            return (Styleregion);
+            //cluster
+            lyrMarkerCluster = L.markerClusterGroup({
+                disableClusteringAtZoom: 17
+            });
+
+            function refreshclinique() {
+                $.ajax({
+                    url: "load_clinique.php",
+                    type: "POST",
+                    success: function(response) {
+                        if (lyrclinique) {
+                            mymap.removeLayer(lyrclinique);
                         }
-                    },
-                onEachFeature: function (feature,layer){
+                        lyrclinique = L.geoJSON(JSON.parse(response), {
+                            pointToLayer: function(feature, latlng) {
+                                return L.marker(latlng, {
+                                    icon: icnLAMclinique
+                                });
+                            },
+                            onEachFeature: function(feature, layer) {
+                                var strbuildingInfo =
+                                    "<h4 style='color: brown;text-align:center;text-decoration: underline;font-weight:bold'>INFORMATIONS</h4>";
+                                strbuildingInfo +=
+                                    "<h4> <span style='text-decoration: underline;font-weight:bold'>Nom :</span> <span style='color:blue'>" +
+                                    feature.properties.name +
+                                    " </span> </h4>";
 
-                var strbuildingInfo = "<h4 style='color: brown;text-align:center;text-decoration: underline;font-weight:bold'>INFORMATIONS</h4>"
-                strbuildingInfo += "<h4> <span style='font-weight:bold'>Nom :</span> <span style='color:blue'>"+feature.properties.name+" </span> </h4> </br>"
-                strbuildingInfo += "<h4> <span style='font-weight:bold'>Population estimée (2020) :</span> <span style='color:blue'>"+feature.properties.pop_estim_2020+" </span> </h4> </br>"
-                strbuildingInfo += "<h4> <span style='font-weight:bold'>Nombre de cas:</span> <span style='color:blue'>"+feature.properties.nombre_total_de_cas+" </span> </h4> </br>"
-                strbuildingInfo += "<h4> <span style='font-weight:bold'>Nombre de victimes:</span> <span style='color:red'>"+feature.properties.nombre_de_victimes+" </span> </h4> </br>"
-                strbuildingInfo += "<h4> <span style='font-weight:bold'>Personnes rétablies:</span> <span style='color:green'>"+feature.properties.nombre_de_personnes_retablies+" </span> </h4> "
-              
-                layer.bindPopup(String(strbuildingInfo));
+                                layer.bindPopup(String(strbuildingInfo));
+                            }
+                        });
+                        lyrMarkerCluster.addLayer(lyrclinique);
+                    }
+                });
+            }
 
-              } 
-          })
-                lyrregion.addTo(mymap);
+            function refreshhotel() {
+                $.ajax({
+                    url: "load_hotel.php",
+                    type: "POST",
+                    success: function(response) {
+                        if (lyrhotel) {
+                            mymap.removeLayer(lyrhotel);
+                        }
+                        lyrhotel = L.geoJSON(JSON.parse(response), {
+                            pointToLayer: function(feature, latlng) {
+                                return L.marker(latlng, {
+                                    icon: icnLAMhotel
+                                });
+                            },
+                            onEachFeature: function(feature, layer) {
+                                var strbuildingInfo =
+                                    "<h4 style='color: brown;text-align:center;text-decoration: underline;font-weight:bold'>INFORMATIONS</h4>";
+                                strbuildingInfo +=
+                                    "<h4> <span style='text-decoration: underline;font-weight:bold'>Nom :</span> <span style='color:blue'>" +
+                                    feature.properties.name +
+                                    " </span> </h4>";
 
-           }});
+                                layer.bindPopup(String(strbuildingInfo));
+                            }
+                        });
+                        lyrMarkerCluster.addLayer(lyrhotel);
+                    }
+                });
+            }
 
-       }
-        refreshclinique();
-//        refreshquartier();
-        refreshregion();
-        refreshhotel();
-        refreshpharmacie();
-        refreshphoptiaux();
-        refreshpolice();
+            function refreshpharmacie() {
+                $.ajax({
+                    url: "load_pharmacie.php",
+                    type: "POST",
+                    success: function(response) {
+                        if (lyrpharmacie) {
+                            mymap.removeLayer(lyrpharmacie);
+                        }
+                        lyrpharmacie = L.geoJSON(JSON.parse(response), {
+                            pointToLayer: function(feature, latlng) {
+                                return L.marker(latlng, {
+                                    icon: icnLAMpharmacie
+                                });
+                            },
 
-        //intergration side bar dans plugin
-        ctlsidebar = L.control.sidebar("sidebar").addTo(mymap);
+                            onEachFeature: function(feature, layer) {
+                                var strbuildingInfo =
+                                    "<h4 style='color: brown;text-align:center;text-decoration: underline;font-weight:bold'>INFORMATIONS</h4>";
+                                strbuildingInfo +=
+                                    "<h4> <span style='text-decoration: underline;font-weight:bold'>Nom :</span> <span style='color:blue'>" +
+                                    feature.properties.name +
+                                    " </span> </h4>";
 
-        // easy_bouton pour montrer ou cacher le side bar
-        ctleasybutton = L.easyButton("glyphicon-transfer", function() {
-          ctlsidebar.toggle();
-        }).addTo(mymap);
-      });
+                                layer.bindPopup(String(strbuildingInfo));
+                            }
+                        });
+                        lyrMarkerCluster.addLayer(lyrpharmacie);
+                    }
+                });
+            }
+
+            function refreshphoptiaux() {
+                $.ajax({
+                    url: "load_hopitaux.php",
+                    type: "POST",
+                    success: function(response) {
+                        if (lyrhopitaux) {
+                            mymap.removeLayer(lyrhopitaux);
+                        }
+                        lyrhopitaux = L.geoJSON(JSON.parse(response), {
+                            pointToLayer: function(feature, latlng) {
+                                return L.marker(latlng, {
+                                    icon: icnLAMhopitaux
+                                });
+                            },
+                            onEachFeature: function(feature, layer) {
+                                var strbuildingInfo =
+                                    "<h4 style='color: brown;text-align:center;text-decoration: underline;font-weight:bold'>INFORMATIONS</h4>";
+                                strbuildingInfo +=
+                                    "<h4> <span style='text-decoration: underline;font-weight:bold'>Nom :</span> <span style='color:blue'>" +
+                                    feature.properties.name +
+                                    " </span> </h4> ";
+
+                                layer.bindPopup(String(strbuildingInfo));
+                            }
+                        });
+                        lyrMarkerCluster.addLayer(lyrhopitaux);
+                    }
+                });
+            }
+
+            function refreshpolice() {
+                $.ajax({
+                    url: "load_police.php",
+                    type: "POST",
+                    success: function(response) {
+                        if (lyrpolice) {
+                            mymap.removeLayer(lyrpolice);
+                        }
+                        lyrpolice = L.geoJSON(JSON.parse(response), {
+                            pointToLayer: function(feature, latlng) {
+                                return L.marker(latlng, {
+                                    icon: icnLAMpolice
+                                });
+                            },
+
+                            onEachFeature: function(feature, layer) {
+                                var strbuildingInfo =
+                                    "<h4 style='color: brown;text-align:center;text-decoration: underline;font-weight:bold'>INFORMATIONS</h4>";
+                                strbuildingInfo +=
+                                    "<h4> <span style='text-decoration: underline;font-weight:bold'>Nom :</span> <span style='color:blue'>" +
+                                    feature.properties.name +
+                                    " </span> </h4> ";
+
+                                layer.bindPopup(String(strbuildingInfo));
+                            }
+                        });
+                        lyrMarkerCluster.addLayer(lyrpolice);
+                        lyrMarkerCluster.addTo(mymap);
+                    }
+                });
+            }
+
+
+            function refreshregion() {
+                $.ajax({
+                    url: 'load_region.php',
+                    type: 'POST',
+                    success: function(response) {
+                        if (lyrregion) {
+                            mymap.removeLayer(lyrregion)
+                        };
+                        lyrregion = L.geoJSON(JSON.parse(response), {
+                            style: function(feature, layer) {
+                                if (feature.properties.nombre_total_de_cas >= 1) {
+                                    return Styleregion_case;
+                                } else {
+                                    return (Styleregion);
+                                }
+                            },
+                            onEachFeature: function(feature, layer) {
+
+                                var strbuildingInfo = "<h6 style='color: brown;text-align:center;text-decoration: underline;font-weight:bold'>INFORMATIONS</h6>"
+                                strbuildingInfo += "<h6> <span style='font-weight:bold'>Région :</span> <span style='color:blue'>" + feature.properties.name + " </span> </h6> </br>"
+                                strbuildingInfo += "<h6> <span style='font-weight:bold'>Population :</span> <span style='color:blue'>" + feature.properties.pop_estim_2020 + " </span> </h6> </br>"
+                                strbuildingInfo += "<h6> <span style='font-weight:bold'>Nombre de cas:</span> <span style='color:blue'>" + feature.properties.nombre_total_de_cas + " </span> </h6> </br>"
+                                strbuildingInfo += "<h6> <span style='font-weight:bold'>Nombre de victimes:</span> <span style='color:red'>" + feature.properties.nombre_de_victimes + " </span> </h6> </br>"
+                                strbuildingInfo += "<h6> <span style='font-weight:bold'>Personnes rétablies:</span> <span style='color:green'>" + feature.properties.nombre_de_personnes_retablies + " </span> </h6> "
+
+                                layer.bindPopup(String(strbuildingInfo));
+
+                            }
+                        })
+                        lyrregion.addTo(mymap);
+
+                    }
+                });
+
+            }
+            refreshclinique();
+            refreshregion();
+            refreshhotel();
+            refreshpharmacie();
+            refreshphoptiaux();
+            refreshpolice();
+
+            //intergration side bar dans plugin
+            ctlsidebar = L.control.sidebar("sidebar").addTo(mymap);
+
+            // easy_bouton pour montrer ou cacher le side bar
+            ctleasybutton = L.easyButton("glyphicon-transfer", function() {
+                ctlsidebar.toggle();
+            }).addTo(mymap);
+        });
+
     </script>
-  </body>
+</body>
+
 </html>
