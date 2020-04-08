@@ -1,1 +1,0 @@
-[02-Apr-2020 03:39:32 America/Boise] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: :per in /home2/homembd4/public_html/covid19/dashboard/centre_sum - Copy.php on line 6
