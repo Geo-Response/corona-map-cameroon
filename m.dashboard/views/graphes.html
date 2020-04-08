@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+
+    <title>CORONA MOBILE</title>
+    <link rel="stylesheet" href="../assets/libs/leaflet.css" />
+    <link rel="stylesheet" href="../assets/libs/css/bootstrap-grid.min.css" />
+    <link rel="stylesheet" href="../assets/libs/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../assets/libs/plugins/Control.MiniMap.css" />
+    <link rel="stylesheet" href="../assets/libs/plugins/L.Control.Sidebar.css" />
+    <link rel="stylesheet" href="../assets/libs/plugins/easy-button.css" />
+    <link rel="stylesheet" href="../assets/libs/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="../assets/libs/plugins/leaflet.awesome-markers.css" />
+    <link rel="stylesheet" href="../assets/libs/plugins/MarkerCluster.css" />
+    <link rel="stylesheet" href="../assets/libs/plugins/MarkerCluster.Default.css" />
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+
+    <script src="../assets/libs/plugins/ajax.js"></script>
+    <script src="../assets/libs/leaflet-src.js"></script>
+    <script src="../assets/libs/jquery-3.2.0.min.js"></script>
+    <script src="../assets/libs/plugins/Control.MiniMap.js"></script>
+    <script src="../assets/libs/plugins/leaflet-providers.js"></script>
+    <script src="../assets/libs/plugins/L.Control.Sidebar.js"></script>
+    <script src="../assets/libs/plugins/easy-button.js"></script>
+    <script src="../assets/libs/plugins/leaflet.awesome-markers.min.js"></script>
+    <script src="../assets/libs/plugins/leaflet.markercluster.js"></script>
+    <script src="../assets/libs/js/bootstrap.min.js"></script>
+
+    <style>
+
+    </style>
+
+</head>
+
+<body>
+
+    <ul>
+        <li><a href="corona.html">Accueil</a></li>
+        <li><a href="carte.html">Carte</a></li>
+        <li><a href="stats.html">Stats</a></li>
+        <li><a class="active" href="#">Graphes</a></li>
+        <li><a href="actu.html">Actu</a></li>
+    </ul>
+
+
+    <div class="content " style="padding:20px;padding-top:60px; background:rgba(14, 19, 15, 0.3);height:100vh;overflow-y:auto">
+        <h2>PAS D'INFORMATIONS DISPONIBLES POUR LE MOMENT</h2>
+
+        <p>Les prochaines mises à jour seront disponibles très bientôt</p>
+
+
+
+    </div>
+    <script>
+        $(document).ready(function() {
+            function isMobile() {
+                if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
+            if (!isMobile()) {
+                if (confirm("Ceci n'est pas un appareil mobile\n\nSouhaitez-vous plutôt ouvrir la version ordinateur de l'application ?")) {
+                    window.location.href = "../../dashboard/views/corona.html";
+                }
+            }
+        })
+
+    </script>
+
+</body>
+
+</html>

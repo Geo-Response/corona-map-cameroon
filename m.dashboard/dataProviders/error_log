@@ -1,0 +1,7 @@
+[01-Apr-2020 21:02:09 America/Boise] PHP Fatal error:  Uncaught PDOException: SQLSTATE[08006] [7] server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request. in /home2/homembd4/public_html/covid19/m.dashboard/php/region_sum.php:3
+Stack trace:
+#0 /home2/homembd4/public_html/covid19/m.dashboard/php/region_sum.php(3): PDO->__construct('pgsql:host=geor...', 'postgres@geores...', 'Geoadvantage202...')
+#1 {main}
+  thrown in /home2/homembd4/public_html/covid19/m.dashboard/php/region_sum.php on line 3
