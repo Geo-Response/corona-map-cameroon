@@ -263,6 +263,21 @@
                                 Chargement des départements affectés ... </div>
                         </div>
                     </div>
+					
+                    <div class="card">
+                        <div class="card-header">
+                            <a class="card-link collapsed" data-toggle="collapse" href="#adamaoua" aria-expanded="false">
+                                ADAMAOUA:
+                            </a>
+                            <span id="C_adamaoua" class="case"> 00</span>
+                            <span id="V_adamaoua" class="victim"> 00</span>
+                            <span id="R_adamaoua" class="recover"> 00</span>
+                        </div>
+                        <div id="adamaoua" class="collapse" data-parent="#accordion">
+                            <div id="table_adamaoua" class="card-body">
+                                Chargement des départements affectés ... </div>
+                        </div>
+                    </div>
 
                 </div>
             </nav>
@@ -474,6 +489,16 @@
                 $("#R_est").html(datas[2]);
             });
 
+            $.getJSON("php/adamaoua_sum.php", function(data) {
+                var datas = [];
+                $.each(data, function(key, val) {
+                    datas.push(val);
+                });
+                $("#C_adamaoua").html(datas[0]);
+                $("#V_adamaoua").html(datas[1]);
+                $("#R_adamaoua").html(datas[2]);
+            });
+
             $.getJSON("php/region_sum.php", function(data) {
                 var datas = [];
                 $.each(data, function(key, val) {
@@ -566,7 +591,18 @@
 
             table_est();
 
+            function table_adamaoua() {
+                $.ajax({
+                    url: 'php/table_adamaoua.php',
+                    type: 'POST',
+                    success: function(response) {
+                        $("#table_adamaoua").html(response)
 
+                    }
+                });
+            };
+
+            table_adamaoua();
 
             //cartographique
             southWest_bnd = L.latLng(1, 17);
@@ -582,7 +618,7 @@
             });
 
 
-            lyrOSM = L.tileLayer.provider("OpenStreetMap.Mapnik");
+            lyrOSM = L.tileLayer.provider("OpenStreetMap.Mapnik").addTo(mymap);
             lyrImageryEsri = L.tileLayer.provider("Esri.WorldImagery");
             lyrOSM2 = L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}.png");
             lyrImageryGoogle = L.tileLayer(
