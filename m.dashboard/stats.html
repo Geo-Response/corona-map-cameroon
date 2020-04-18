@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi"
+    />
 
     <title>CORONA MOBILE</title>
     <link rel="stylesheet" href="src/css/bootstrap-grid.min.css" />
@@ -15,482 +17,519 @@
     <script src="src/js/bootstrap.min.js"></script>
 
     <style>
-        sidebar-header {
-            position: fixed;
-        }
+      sidebar-header {
+        position: fixed;
+      }
 
-        .content {
-            padding: 10px;
-            position: relative;
-            top: 50px;
-            height: 200%;
-            background-color: #1e1e1e;
+      .content {
+        padding: 10px;
+        position: relative;
+        /* top: 50px; */
+        height: 200%;
+        background-color: #1e1e1e;
+      }
 
-        }
+      .card-body {
+        padding: 10px;
+      }
 
+      .card-header {
+        height: 9vh;
+        padding: 0.75rem 1.25rem;
+        margin-bottom: 0;
+        background-color: #444444;
+        border-bottom: 1px solid rgb(29, 23, 23);
+      }
 
-        .card-body {
-            padding: 10px
-        }
+      .card-link {
+        margin-right: 5px;
+        font-family: Lato;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 30px;
+        align-items: center;
+        color: #fff !important;
+      }
 
-        .card-header {
-            height: 9vh;
-            padding: .75rem 1.25rem;
-            margin-bottom: 0;
-            background-color: #444444;
-            border-bottom: 1px solid rgb(29, 23, 23);
-        }
+      .text {
+        color: white;
+        text-align: center;
+      }
 
-        .card-link {
-            margin-right: 5px;
-            font-family: Lato;
-            font-style: normal;
-            font-weight: bold;
-            font-size: 16px;
-            line-height: 30px;
-            align-items: center;
-            color: #fff !important;
-        }
+      .case {
+        margin-right: 10px;
+        color: #ea8c35;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 900;
+        font-size: 18px;
+        line-height: 41px;
+      }
 
-        .text {
-            color: white;
-            text-align: center
-        }
+      .victim {
+        margin-right: 10px;
+        color: #b50122;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 900;
+        font-size: 18px;
+        line-height: 41px;
+      }
 
-        .case {
-            margin-right: 10px;
-            color: #ea8c35;
-            font-family: Roboto;
-            font-style: normal;
-            font-weight: 900;
-            font-size: 18px;
-            line-height: 41px;
-        }
+      .recover {
+        color: #08725f;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 900;
+        font-size: 16px;
+        line-height: 41px;
+      }
 
-        .victim {
-            margin-right: 10px;
-            color: #b50122;
-            font-family: Roboto;
-            font-style: normal;
-            font-weight: 900;
-            font-size: 18px;
-            line-height: 41px;
-        }
+      .casetot,
+      .victimtot,
+      .recovertot {
+        font-size: 30px;
+        text-align: center;
+      }
 
-        .recover {
-            color: #08725f;
-            font-family: Roboto;
-            font-style: normal;
-            font-weight: 900;
-            font-size: 16px;
-            line-height: 41px;
-        }
-
-        .casetot,
-        .victimtot,
-        .recovertot {
-            font-size: 30px;
-            text-align: center;
-        }
-
-        .threeboxes {
-            display: inline !important;
-            padding-left: 15px !important;
-            padding-right: 0px !important;
-            border: solid #FFC800 1px;
-            margin-bottom: 10px;
-
-        }
-
+      .threeboxes {
+        display: inline !important;
+        padding-left: 15px !important;
+        padding-right: 0px !important;
+        border: solid #ffc800 1px;
+        margin-bottom: 10px;
+      }
     </style>
+  </head>
 
-</head>
-
-<body>
-
-    <ul>
-        <li><a href="corona.html">Accueil</a></li>
-        <li><a href="carte.html">Carte</a></li>
-        <li><a class="active" href="#">Stats</a></li>
-        <li><a href="graphes.html">Graphes</a></li>
-        <li><a href="actu.html">Actu</a></li>
+  <body>
+    <ul class="fixed-bottom">
+      <li><a href="corona.html">Accueil</a></li>
+      <li><a href="carte.html">Carte</a></li>
+      <li><a class="active" href="#">Stats</a></li>
+      <li><a href="graphes.html">Graphes</a></li>
+      <li><a href="actu.html">Actu</a></li>
     </ul>
 
-
-
-
     <div class="content">
-        <div class="row sidebar-header">
-            <div class="division  col-4 threeboxes">
-                <div class="row tot-fig">
-                    <div id="case" class="case col-sm-12 casetot">
-                        00
-                    </div>
-                    <div class="col-sm-12">
-                        <h6 class="text">Cas</h6>
-                    </div>
-                </div>
+      <div class="row sidebar-header">
+        <div class="division col-4 threeboxes">
+          <div class="row tot-fig">
+            <div id="case" class="case col-sm-12 casetot">
+              00
             </div>
-
-            <div class="division col-4 threeboxes">
-                <div class="row tot-fig">
-                    <div id="victim" class="victim col-sm-12 victimtot">
-                        00
-                    </div>
-                    <div class="col-sm-12">
-                        <h6 class="text">Victimes</h6>
-                    </div>
-                </div>
+            <div class="col-sm-12">
+              <h6 class="text">Cas</h6>
             </div>
-            <div class="division  col-4 threeboxes">
-                <div class="row tot-fig">
-                    <div id="recover" class="recover col-sm-12 recovertot">
-                        00
-                    </div>
-                    <div class="col-sm-12">
-                        <h6 class="text">
-                            Rétablis
-                        </h6>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="accordion">
-            <div class="card">
-                <div class="card-header">
-                    <a class="card-link collapsed" data-toggle="collapse" href="#centre" aria-expanded="false">
-                        CENTRE:
-                    </a>
-                    <span id="C_centre" class="case"> 00</span>
-                    <span id="V_centre" class="victim"> 00</span>
-                    <span id="R_centre" class="recover"> 00</span>
-                </div>
-                <div id="centre" class="collapse" data-parent="#accordion">
-                    <div id="table_centre" class="card-body">
-                        Chargement des départements affectés ...
-                    </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <a class="card-link collapsed" data-toggle="collapse" href="#littoral" aria-expanded="false">
-                        LITTORAL:
-                    </a>
-                    <span id="C_littoral" class="case"> 00</span>
-                    <span id="V_littoral" class="victim"> 00</span>
-                    <span id="R_littoral" class="recover"> 00</span>
-                </div>
-                <div id="littoral" class="collapse" data-parent="#accordion">
-                    <div id="table_littoral" class="card-body">
-                        Chargement des départements affectés ...
-                    </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <a class="card-link collapsed" data-toggle="collapse" href="#ouest" aria-expanded="false">
-                        OUEST:
-                    </a>
-                    <span id="C_ouest" class="case"> 00</span>
-                    <span id="V_ouest" class="victim"> 00</span>
-                    <span id="R_ouest" class="recover"> 00</span>
-                </div>
-                <div id="ouest" class="collapse" data-parent="#accordion">
-                    <div id="table_ouest" class="card-body">
-                        Chargement des départements affectés ...
-                    </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <a class="card-link collapsed" data-toggle="collapse" href="#sudouest" aria-expanded="false">
-                        SUD-OUEST:
-                    </a>
-                    <span id="C_sudouest" class="case"> 00</span>
-                    <span id="V_sudouest" class="victim"> 00</span>
-                    <span id="R_sudouest" class="recover"> 00</span>
-                </div>
-                <div id="sudouest" class="collapse" data-parent="#accordion">
-                    <div id="table_sudouest" class="card-body">
-                        Chargement des départements affectés ...
-                    </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <a class="card-link collapsed" data-toggle="collapse" href="#sud" aria-expanded="false">
-                        SUD:
-                    </a>
-                    <span id="C_sud" class="case"> 00</span>
-                    <span id="V_sud" class="victim"> 00</span>
-                    <span id="R_sud" class="recover"> 00</span>
-                </div>
-                <div id="sud" class="collapse" data-parent="#accordion">
-                    <div id="table_sud" class="card-body">
-                        Chargement des départements affectés ... </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <a class="card-link collapsed" data-toggle="collapse" href="#est" aria-expanded="false">
-                        EST:
-                    </a>
-                    <span id="C_est" class="case"> 00</span>
-                    <span id="V_est" class="victim"> 00</span>
-                    <span id="R_est" class="recover"> 00</span>
-                </div>
-                <div id="est" class="collapse" data-parent="#accordion">
-                    <div id="table_est" class="card-body">
-                        Chargement des départements affectés ... </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <a class="card-link collapsed" data-toggle="collapse" href="#nordouest" aria-expanded="false">
-                        NORD-OUEST:
-                    </a>
-                    <span id="C_nordouest" class="case"> 00</span>
-                    <span id="V_nordouest" class="victim"> 00</span>
-                    <span id="R_nordouest" class="recover"> 00</span>
-                </div>
-                <div id="nordouest" class="collapse" data-parent="#accordion">
-                    <div id="table_nordouest" class="card-body">
-                        Aucune informations disponibles pour le moment
-                    </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <a class="card-link collapsed" data-toggle="collapse" href="#adamaoua" aria-expanded="false">
-                        ADAMAOUA:
-                    </a>
-                    <span id="C_adamaoua" class="case"> 00</span>
-                    <span id="V_adamaoua" class="victim"> 00</span>
-                    <span id="R_adamaoua" class="recover"> 00</span>
-                </div>
-                <div id="adamaoua" class="collapse" data-parent="#accordion">
-                    <div id="table_adamaoua" class="card-body">
-                        Aucune informations disponibles pour le moment </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <a class="card-link collapsed" data-toggle="collapse" href="#nord" aria-expanded="false">
-                        NORD:
-                    </a>
-                    <span id="C_nord" class="case"> 00</span>
-                    <span id="V_nord" class="victim"> 00</span>
-                    <span id="R_nord" class="recover"> 00</span>
-                </div>
-                <div id="nord" class="collapse" data-parent="#accordion">
-                    <div id="table_nord" class="card-body">
-                        Aucune informations disponibles pour le moment </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <a class="card-link collapsed" data-toggle="collapse" href="#extremenord" aria-expanded="false">
-                        EXTREME-NORD:
-                    </a>
-                    <span id="C_extremenord" class="case"> 00</span>
-                    <span id="V_extremenord" class="victim"> 00</span>
-                    <span id="R_extremenord" class="recover"> 00</span>
-                </div>
-                <div id="extremenord" class="collapse" data-parent="#accordion">
-                    <div id="table_extremenord" class="card-body">
-                        Aucune informations disponibles pour le moment </div>
-                </div>
-            </div>
-
-
+          </div>
         </div>
 
+        <div class="division col-4 threeboxes">
+          <div class="row tot-fig">
+            <div id="victim" class="victim col-sm-12 victimtot">
+              00
+            </div>
+            <div class="col-sm-12">
+              <h6 class="text">Victimes</h6>
+            </div>
+          </div>
+        </div>
+        <div class="division col-4 threeboxes">
+          <div class="row tot-fig">
+            <div id="recover" class="recover col-sm-12 recovertot">
+              00
+            </div>
+            <div class="col-sm-12">
+              <h6 class="text">
+                Rétablis
+              </h6>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="accordion">
+        <div class="card">
+          <div class="card-header">
+            <a
+              class="card-link collapsed"
+              data-toggle="collapse"
+              href="#centre"
+              aria-expanded="false"
+            >
+              CENTRE:
+            </a>
+            <span id="C_centre" class="case"> 00</span>
+            <span id="V_centre" class="victim"> 00</span>
+            <span id="R_centre" class="recover"> 00</span>
+          </div>
+          <div id="centre" class="collapse" data-parent="#accordion">
+            <div id="table_centre" class="card-body">
+              Chargement des départements affectés ...
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <a
+              class="card-link collapsed"
+              data-toggle="collapse"
+              href="#littoral"
+              aria-expanded="false"
+            >
+              LITTORAL:
+            </a>
+            <span id="C_littoral" class="case"> 00</span>
+            <span id="V_littoral" class="victim"> 00</span>
+            <span id="R_littoral" class="recover"> 00</span>
+          </div>
+          <div id="littoral" class="collapse" data-parent="#accordion">
+            <div id="table_littoral" class="card-body">
+              Chargement des départements affectés ...
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <a
+              class="card-link collapsed"
+              data-toggle="collapse"
+              href="#ouest"
+              aria-expanded="false"
+            >
+              OUEST:
+            </a>
+            <span id="C_ouest" class="case"> 00</span>
+            <span id="V_ouest" class="victim"> 00</span>
+            <span id="R_ouest" class="recover"> 00</span>
+          </div>
+          <div id="ouest" class="collapse" data-parent="#accordion">
+            <div id="table_ouest" class="card-body">
+              Chargement des départements affectés ...
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <a
+              class="card-link collapsed"
+              data-toggle="collapse"
+              href="#sudouest"
+              aria-expanded="false"
+            >
+              SUD-OUEST:
+            </a>
+            <span id="C_sudouest" class="case"> 00</span>
+            <span id="V_sudouest" class="victim"> 00</span>
+            <span id="R_sudouest" class="recover"> 00</span>
+          </div>
+          <div id="sudouest" class="collapse" data-parent="#accordion">
+            <div id="table_sudouest" class="card-body">
+              Chargement des départements affectés ...
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <a
+              class="card-link collapsed"
+              data-toggle="collapse"
+              href="#sud"
+              aria-expanded="false"
+            >
+              SUD:
+            </a>
+            <span id="C_sud" class="case"> 00</span>
+            <span id="V_sud" class="victim"> 00</span>
+            <span id="R_sud" class="recover"> 00</span>
+          </div>
+          <div id="sud" class="collapse" data-parent="#accordion">
+            <div id="table_sud" class="card-body">
+              Chargement des départements affectés ...
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <a
+              class="card-link collapsed"
+              data-toggle="collapse"
+              href="#est"
+              aria-expanded="false"
+            >
+              EST:
+            </a>
+            <span id="C_est" class="case"> 00</span>
+            <span id="V_est" class="victim"> 00</span>
+            <span id="R_est" class="recover"> 00</span>
+          </div>
+          <div id="est" class="collapse" data-parent="#accordion">
+            <div id="table_est" class="card-body">
+              Chargement des départements affectés ...
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <a
+              class="card-link collapsed"
+              data-toggle="collapse"
+              href="#nordouest"
+              aria-expanded="false"
+            >
+              NORD-OUEST:
+            </a>
+            <span id="C_nordouest" class="case"> 00</span>
+            <span id="V_nordouest" class="victim"> 00</span>
+            <span id="R_nordouest" class="recover"> 00</span>
+          </div>
+          <div id="nordouest" class="collapse" data-parent="#accordion">
+            <div id="table_nordouest" class="card-body">
+              Aucune informations disponibles pour le moment
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <a
+              class="card-link collapsed"
+              data-toggle="collapse"
+              href="#adamaoua"
+              aria-expanded="false"
+            >
+              ADAMAOUA:
+            </a>
+            <span id="C_adamaoua" class="case"> 00</span>
+            <span id="V_adamaoua" class="victim"> 00</span>
+            <span id="R_adamaoua" class="recover"> 00</span>
+          </div>
+          <div id="adamaoua" class="collapse" data-parent="#accordion">
+            <div id="table_adamaoua" class="card-body">
+              Aucune informations disponibles pour le moment
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <a
+              class="card-link collapsed"
+              data-toggle="collapse"
+              href="#nord"
+              aria-expanded="false"
+            >
+              NORD:
+            </a>
+            <span id="C_nord" class="case"> 00</span>
+            <span id="V_nord" class="victim"> 00</span>
+            <span id="R_nord" class="recover"> 00</span>
+          </div>
+          <div id="nord" class="collapse" data-parent="#accordion">
+            <div id="table_nord" class="card-body">
+              Aucune informations disponibles pour le moment
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <a
+              class="card-link collapsed"
+              data-toggle="collapse"
+              href="#extremenord"
+              aria-expanded="false"
+            >
+              EXTREME-NORD:
+            </a>
+            <span id="C_extremenord" class="case"> 00</span>
+            <span id="V_extremenord" class="victim"> 00</span>
+            <span id="R_extremenord" class="recover"> 00</span>
+          </div>
+          <div id="extremenord" class="collapse" data-parent="#accordion">
+            <div id="table_extremenord" class="card-body">
+              Aucune informations disponibles pour le moment
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <script>
-        $(document).ready(function() {
+      $(document).ready(function () {
+        function isMobile() {
+          if (
+            /Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(
+              navigator.userAgent
+            )
+          ) {
+            return true;
+          } else {
+            return false;
+          }
+        }
 
-            function isMobile() {
-                if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
-                    return true;
-                } else {
-                    return false;
-                }
-            }
+        if (!isMobile()) {
+          if (
+            confirm(
+              "Ceci n'est pas un appareil mobile\n\nSouhaitez-vous plutôt ouvrir la version ordinateur de l'application ?"
+            )
+          ) {
+            window.location.href = "../dashboard/corona.html";
+          }
+        }
 
-            if (!isMobile()) {
-                if (confirm("Ceci n'est pas un appareil mobile\n\nSouhaitez-vous plutôt ouvrir la version ordinateur de l'application ?")) {
-                    window.location.href = "../dashboard/corona.html";
-                }
-            }
+        //non cartographique
+        //Mise à jour données régions
 
-            //non cartographique
-            //Mise à jour données régions
+        $.getJSON("php/centre_sum.php", function (data) {
+          var datas = [];
+          $.each(data, function (key, val) {
+            datas.push(val);
+          });
+          $("#C_centre").html(datas[0]);
+          $("#V_centre").html(datas[1]);
+          $("#R_centre").html(datas[2]);
+        });
 
-            $.getJSON("php/centre_sum.php", function(data) {
-                var datas = [];
-                $.each(data, function(key, val) {
-                    datas.push(val);
-                });
-                $("#C_centre").html(datas[0]);
-                $("#V_centre").html(datas[1]);
-                $("#R_centre").html(datas[2]);
-            });
+        $.getJSON("php/littoral_sum.php", function (data) {
+          var datas = [];
+          $.each(data, function (key, val) {
+            datas.push(val);
+          });
+          $("#C_littoral").html(datas[0]);
+          $("#V_littoral").html(datas[1]);
+          $("#R_littoral").html(datas[2]);
+        });
 
-            $.getJSON("php/littoral_sum.php", function(data) {
-                var datas = [];
-                $.each(data, function(key, val) {
-                    datas.push(val);
-                });
-                $("#C_littoral").html(datas[0]);
-                $("#V_littoral").html(datas[1]);
-                $("#R_littoral").html(datas[2]);
-            });
+        $.getJSON("php/ouest_sum.php", function (data) {
+          var datas = [];
+          $.each(data, function (key, val) {
+            datas.push(val);
+          });
+          $("#C_ouest").html(datas[0]);
+          $("#V_ouest").html(datas[1]);
+          $("#R_ouest").html(datas[2]);
+        });
 
-            $.getJSON("php/ouest_sum.php", function(data) {
-                var datas = [];
-                $.each(data, function(key, val) {
-                    datas.push(val);
-                });
-                $("#C_ouest").html(datas[0]);
-                $("#V_ouest").html(datas[1]);
-                $("#R_ouest").html(datas[2]);
-            });
+        $.getJSON("php/sudouest_sum.php", function (data) {
+          var datas = [];
+          $.each(data, function (key, val) {
+            datas.push(val);
+          });
+          $("#C_sudouest").html(datas[0]);
+          $("#V_sudouest").html(datas[1]);
+          $("#R_sudouest").html(datas[2]);
+        });
 
-            $.getJSON("php/sudouest_sum.php", function(data) {
-                var datas = [];
-                $.each(data, function(key, val) {
-                    datas.push(val);
-                });
-                $("#C_sudouest").html(datas[0]);
-                $("#V_sudouest").html(datas[1]);
-                $("#R_sudouest").html(datas[2]);
-            });
+        $.getJSON("php/sud_sum.php", function (data) {
+          var datas = [];
+          $.each(data, function (key, val) {
+            datas.push(val);
+          });
+          $("#C_sud").html(datas[0]);
+          $("#V_sud").html(datas[1]);
+          $("#R_sud").html(datas[2]);
+        });
 
-            $.getJSON("php/sud_sum.php", function(data) {
-                var datas = [];
-                $.each(data, function(key, val) {
-                    datas.push(val);
-                });
-                $("#C_sud").html(datas[0]);
-                $("#V_sud").html(datas[1]);
-                $("#R_sud").html(datas[2]);
-            });
+        $.getJSON("php/est_sum.php", function (data) {
+          var datas = [];
+          $.each(data, function (key, val) {
+            datas.push(val);
+          });
+          $("#C_est").html(datas[0]);
+          $("#V_est").html(datas[1]);
+          $("#R_est").html(datas[2]);
+        });
 
-            $.getJSON("php/est_sum.php", function(data) {
-                var datas = [];
-                $.each(data, function(key, val) {
-                    datas.push(val);
-                });
-                $("#C_est").html(datas[0]);
-                $("#V_est").html(datas[1]);
-                $("#R_est").html(datas[2]);
-            });
+        $.getJSON("php/region_sum.php", function (data) {
+          var datas = [];
+          $.each(data, function (key, val) {
+            datas.push(val);
+          });
+          $("#case").html(datas[0]);
+          $("#victim").html(datas[1]);
+          $("#recover").html(datas[2]);
+        });
 
-            $.getJSON("php/region_sum.php", function(data) {
-                var datas = [];
-                $.each(data, function(key, val) {
-                    datas.push(val);
-                });
-                $("#case").html(datas[0]);
-                $("#victim").html(datas[1]);
-                $("#recover").html(datas[2]);
-            });
+        //Mise à jour tableau données departement
+        function table_centre() {
+          $.ajax({
+            url: "php/table_centre.php",
+            type: "POST",
+            success: function (response) {
+              $("#table_centre").html(response);
+            },
+          });
+        }
 
+        table_centre();
 
-            //Mise à jour tableau données departement
-            function table_centre() {
-                $.ajax({
-                    url: 'php/table_centre.php',
-                    type: 'POST',
-                    success: function(response) {
-                        $("#table_centre").html(response)
+        function table_littoral() {
+          $.ajax({
+            url: "php/table_littoral.php",
+            type: "POST",
+            success: function (response) {
+              $("#table_littoral").html(response);
+            },
+          });
+        }
 
-                    }
-                });
-            };
+        table_littoral();
 
-            table_centre();
+        function table_ouest() {
+          $.ajax({
+            url: "php/table_ouest.php",
+            type: "POST",
+            success: function (response) {
+              $("#table_ouest").html(response);
+            },
+          });
+        }
 
-            function table_littoral() {
-                $.ajax({
-                    url: 'php/table_littoral.php',
-                    type: 'POST',
-                    success: function(response) {
-                        $("#table_littoral").html(response)
+        table_ouest();
 
-                    }
-                });
-            };
+        function table_sudouest() {
+          $.ajax({
+            url: "php/table_sudouest.php",
+            type: "POST",
+            success: function (response) {
+              $("#table_sudouest").html(response);
+            },
+          });
+        }
 
-            table_littoral();
+        table_sudouest();
 
-            function table_ouest() {
-                $.ajax({
-                    url: 'php/table_ouest.php',
-                    type: 'POST',
-                    success: function(response) {
-                        $("#table_ouest").html(response)
+        function table_sud() {
+          $.ajax({
+            url: "php/table_sud.php",
+            type: "POST",
+            success: function (response) {
+              $("#table_sud").html(response);
+            },
+          });
+        }
 
-                    }
-                });
-            };
+        table_sud();
 
-            table_ouest();
+        function table_est() {
+          $.ajax({
+            url: "php/table_est.php",
+            type: "POST",
+            success: function (response) {
+              $("#table_est").html(response);
+            },
+          });
+        }
 
-            function table_sudouest() {
-                $.ajax({
-                    url: 'php/table_sudouest.php',
-                    type: 'POST',
-                    success: function(response) {
-                        $("#table_sudouest").html(response)
-
-                    }
-                });
-            };
-
-            table_sudouest();
-
-            function table_sud() {
-                $.ajax({
-                    url: 'php/table_sud.php',
-                    type: 'POST',
-                    success: function(response) {
-                        $("#table_sud").html(response)
-
-                    }
-                });
-            };
-
-            table_sud();
-
-            function table_est() {
-                $.ajax({
-                    url: 'php/table_est.php',
-                    type: 'POST',
-                    success: function(response) {
-                        $("#table_est").html(response)
-
-                    }
-                });
-            };
-
-            table_est();
-
-
-
-        }) //document ready function
-
+        table_est();
+      }); //document ready function
     </script>
-
-</body>
-
+  </body>
 </html>

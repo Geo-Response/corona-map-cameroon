@@ -1,0 +1,81 @@
+body {
+  background-image: url("img/corona.png");
+  background-repeat: repeat-y;
+  background-size: cover;
+}
+.content {
+  /* padding: 20px;
+  padding-top: 60px; */
+  background-color: #1e1e1e;
+
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.nav > .span {
+  font-size: 6px;
+  display: inline-block;
+  padding-top: 0.3125rem;
+  padding-bottom: 0.3125rem;
+  margin-right: 1rem;
+  font-size: 1.25rem;
+  line-height: inherit;
+  white-space: nowrap;
+}
+
+.card {
+  background-color: #1e1e1e;
+  color: aliceblue;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+}
+
+.case-home {
+  margin-right: 10px;
+  color: #ea8c35;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 60px;
+  line-height: 41px;
+}
+
+.victim-home {
+  margin-right: 10px;
+  color: #b50122;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 60px;
+  line-height: 41px;
+}
+
+.recover-home {
+  color: #08725f;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 60px;
+  line-height: 41px;
+}
+
+.Region-home {
+  color: #999999;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 60px;
+  line-height: 41px;
+}
+
+/* .row-1 {
+  background-color: bisque;
+}
+.row-2 {
+  background-color: rgb(12, 190, 131);
+}
+.row-3 {
+  background-color: rgb(12, 30, 190);
+}
+.row-4 {
+  background-color: rgb(119, 12, 190);
+} */
