@@ -3,6 +3,26 @@ body {
   background-repeat: repeat-y;
   background-size: cover;
 }
+
+#navimg1 {
+  position: absolute;
+  top: -54px;
+  left: 144px;
+  height: 95px;
+  z-index: 0;
+  opacity: 13;
+  filter: blur(3px);
+}
+#navimg2 {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  height: 105px;
+  z-index: 0;
+  opacity: 13;
+  filter: blur(1px);
+}
+
 .content {
   /* padding: 20px;
   padding-top: 60px; */
@@ -12,21 +32,32 @@ body {
   overflow-y: auto;
 }
 
-.nav > .span {
-  font-size: 6px;
-  display: inline-block;
-  padding-top: 0.3125rem;
-  padding-bottom: 0.3125rem;
-  margin-right: 1rem;
-  font-size: 1.25rem;
-  line-height: inherit;
-  white-space: nowrap;
+.nav-container {
+  padding: 10px 0 5px 10px;
+  display: flex;
+  flex-direction: column !important;
+  justify-content: start;
+  background-color: hsla(0, 0%, 100%, 0.24);
+  color: rgb(255, 255, 255);
 }
 
+nav > span {
+  font-size: 12px;
+  display: block;
+}
+
+.acceuil-content {
+  position: relative;
+  top: 109px;
+}
 .card {
   background-color: #1e1e1e;
-  color: aliceblue;
+  color: rgb(255, 255, 255);
   border: 1px solid rgba(255, 255, 255, 0.125);
+}
+
+.card-body {
+  padding: 0.67rem;
 }
 
 .case-home {
