@@ -2,14 +2,15 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
 
-    <title>CORONA MOBILE</title>
+    <title>COVID-19 Cameroun</title>
     <link rel="stylesheet" href="src/css/bootstrap-grid.min.css" />
     <link rel="stylesheet" href="src/css/bootstrap.min.css" />
     <link rel="stylesheet" href="src/css/font-awesome.min.css" />
     <link rel="stylesheet" href="css/styles.css" />
+    <link rel="shortcut icon" sizes="196x196" href="img/icone_georesponse.png">
 
     <script src="src/jquery-3.2.0.min.js"></script>
     <script src="src/js/bootstrap.min.js"></script>
@@ -22,20 +23,18 @@
         .content {
             padding: 10px;
             position: relative;
-            top: 50px;
+            margin-bottom: 50px;
             height: 200%;
             background-color: #1e1e1e;
-
         }
 
-
         .card-body {
-            padding: 10px
+            padding: 10px;
         }
 
         .card-header {
             height: 9vh;
-            padding: .75rem 1.25rem;
+            padding: 0.75rem 1.25rem;
             margin-bottom: 0;
             background-color: #444444;
             border-bottom: 1px solid rgb(29, 23, 23);
@@ -54,7 +53,7 @@
 
         .text {
             color: white;
-            text-align: center
+            text-align: center;
         }
 
         .case {
@@ -97,18 +96,15 @@
             display: inline !important;
             padding-left: 15px !important;
             padding-right: 0px !important;
-            border: solid #FFC800 1px;
+            border: solid #ffc800 1px;
             margin-bottom: 10px;
-
         }
 
     </style>
-
 </head>
 
 <body>
-
-    <ul>
+    <ul class="fixed-bottom">
         <li><a href="corona.html">Accueil</a></li>
         <li><a href="carte.html">Carte</a></li>
         <li><a class="active" href="#">Stats</a></li>
@@ -116,12 +112,9 @@
         <li><a href="actu.html">Actu</a></li>
     </ul>
 
-
-
-
     <div class="content">
         <div class="row sidebar-header">
-            <div class="division  col-4 threeboxes">
+            <div class="division col-4 threeboxes">
                 <div class="row tot-fig">
                     <div id="case" class="case col-sm-12 casetot">
                         00
@@ -142,7 +135,7 @@
                     </div>
                 </div>
             </div>
-            <div class="division  col-4 threeboxes">
+            <div class="division col-4 threeboxes">
                 <div class="row tot-fig">
                     <div id="recover" class="recover col-sm-12 recovertot">
                         00
@@ -231,7 +224,8 @@
                 </div>
                 <div id="sud" class="collapse" data-parent="#accordion">
                     <div id="table_sud" class="card-body">
-                        Chargement des départements affectés ... </div>
+                        Chargement des départements affectés ...
+                    </div>
                 </div>
             </div>
 
@@ -246,7 +240,8 @@
                 </div>
                 <div id="est" class="collapse" data-parent="#accordion">
                     <div id="table_est" class="card-body">
-                        Chargement des départements affectés ... </div>
+                        Chargement des départements affectés ...
+                    </div>
                 </div>
             </div>
 
@@ -261,7 +256,8 @@
                 </div>
                 <div id="adamaoua" class="collapse" data-parent="#accordion">
                     <div id="table_adamaoua" class="card-body">
-                        Aucune informations disponibles pour le moment </div>
+                        Aucune informations disponibles pour le moment
+                    </div>
                 </div>
             </div>
 
@@ -292,7 +288,8 @@
                 </div>
                 <div id="nord" class="collapse" data-parent="#accordion">
                     <div id="table_nord" class="card-body">
-                        Aucune informations disponibles pour le moment </div>
+                        Aucune informations disponibles pour le moment
+                    </div>
                 </div>
             </div>
 
@@ -307,19 +304,20 @@
                 </div>
                 <div id="extremenord" class="collapse" data-parent="#accordion">
                     <div id="table_extremenord" class="card-body">
-                        Aucune informations disponibles pour le moment </div>
+                        Aucune informations disponibles pour le moment
+                    </div>
                 </div>
             </div>
-
-
         </div>
-
     </div>
     <script>
         $(document).ready(function() {
-
             function isMobile() {
-                if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
+                if (
+                    /Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(
+                        navigator.userAgent
+                    )
+                ) {
                     return true;
                 } else {
                     return false;
@@ -327,7 +325,11 @@
             }
 
             if (!isMobile()) {
-                if (confirm("Ceci n'est pas un appareil mobile\n\nSouhaitez-vous plutôt ouvrir la version ordinateur de l'application ?")) {
+                if (
+                    confirm(
+                        "Ceci n'est pas un appareil mobile\n\nSouhaitez-vous plutôt ouvrir la version ordinateur de l'application ?"
+                    )
+                ) {
                     window.location.href = "../dashboard/corona.html";
                 }
             }
@@ -404,6 +406,27 @@
                 $("#V_adamaoua").html(datas[1]);
                 $("#R_adamaoua").html(datas[2]);
             });
+
+            $.getJSON("php/nord_sum.php", function(data) {
+                var datas = [];
+                $.each(data, function(key, val) {
+                    datas.push(val);
+                });
+                $("#C_nord").html(datas[0]);
+                $("#V_nord").html(datas[1]);
+                $("#R_nord").html(datas[2]);
+            });
+
+            $.getJSON("php/nordouest_sum.php", function(data) {
+                var datas = [];
+                $.each(data, function(key, val) {
+                    datas.push(val);
+                });
+                $("#C_nordouest").html(datas[0]);
+                $("#V_nordouest").html(datas[1]);
+                $("#R_nordouest").html(datas[2]);
+            });
+
             $.getJSON("php/region_sum.php", function(data) {
                 var datas = [];
                 $.each(data, function(key, val) {
@@ -414,103 +437,121 @@
                 $("#recover").html(datas[2]);
             });
 
-
             //Mise à jour tableau données departement
             function table_centre() {
                 $.ajax({
-                    url: 'php/table_centre.php',
-                    type: 'POST',
+                    url: "php/table_centre.php",
+                    type: "POST",
                     success: function(response) {
-                        $("#table_centre").html(response)
-
-                    }
+                        $("#table_centre").html(response);
+                    },
                 });
-            };
+            }
 
             table_centre();
 
             function table_littoral() {
                 $.ajax({
-                    url: 'php/table_littoral.php',
-                    type: 'POST',
+                    url: "php/table_littoral.php",
+                    type: "POST",
                     success: function(response) {
-                        $("#table_littoral").html(response)
-
-                    }
+                        $("#table_littoral").html(response);
+                    },
                 });
-            };
+            }
 
             table_littoral();
 
             function table_ouest() {
                 $.ajax({
-                    url: 'php/table_ouest.php',
-                    type: 'POST',
+                    url: "php/table_ouest.php",
+                    type: "POST",
                     success: function(response) {
-                        $("#table_ouest").html(response)
-
-                    }
+                        $("#table_ouest").html(response);
+                    },
                 });
-            };
+            }
 
             table_ouest();
 
             function table_sudouest() {
                 $.ajax({
-                    url: 'php/table_sudouest.php',
-                    type: 'POST',
+                    url: "php/table_sudouest.php",
+                    type: "POST",
                     success: function(response) {
-                        $("#table_sudouest").html(response)
-
-                    }
+                        $("#table_sudouest").html(response);
+                    },
                 });
-            };
+            }
 
             table_sudouest();
 
             function table_sud() {
                 $.ajax({
-                    url: 'php/table_sud.php',
-                    type: 'POST',
+                    url: "php/table_sud.php",
+                    type: "POST",
                     success: function(response) {
-                        $("#table_sud").html(response)
-
-                    }
+                        $("#table_sud").html(response);
+                    },
                 });
-            };
+            }
 
             table_sud();
 
             function table_est() {
                 $.ajax({
-                    url: 'php/table_est.php',
-                    type: 'POST',
+                    url: "php/table_est.php",
+                    type: "POST",
                     success: function(response) {
-                        $("#table_est").html(response)
-
-                    }
+                        $("#table_est").html(response);
+                    },
                 });
-            };
+            }
 
             table_est();
 
             function table_adamaoua() {
                 $.ajax({
-                    url: 'php/table_adamaoua.php',
-                    type: 'POST',
+                    url: "php/table_adamaoua.php",
+                    type: "POST",
                     success: function(response) {
-                        $("#table_adamaoua").html(response)
-
-                    }
+                        $("#table_adamaoua").html(response);
+                    },
                 });
-            };
+            }
 
             table_adamaoua();
 
-        }) //document ready function
+            function table_nord() {
+                $.ajax({
+                    url: "php/table_nord.php",
+                    type: "POST",
+                    success: function(response) {
+                        $("#table_nord").html(response);
+                    },
+                });
+            }
+
+            table_nord();
+
+            function table_nordouest() {
+                $.ajax({
+                    url: "php/table_nordouest.php",
+                    type: "POST",
+                    success: function(response) {
+                        $("#table_nordouest").html(response);
+                    },
+                });
+            }
+
+            table_nordouest();
+
+
+        });
+
+        //document ready function
 
     </script>
-
 </body>
 
 </html>

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
 
-    <title>CORONA MOBILE</title>
+    <title>COVID-19 Cameroun</title>
     <link rel="stylesheet" href="src/leaflet.css" />
     <link rel="stylesheet" href="src/css/bootstrap-grid.min.css" />
     <link rel="stylesheet" href="src/css/bootstrap.min.css" />
@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="src/plugins/MarkerCluster.css" />
     <link rel="stylesheet" href="src/plugins/MarkerCluster.Default.css" />
     <link rel="stylesheet" href="css/styles.css" />
+    <link rel="shortcut icon" sizes="196x196" href="img/icone_georesponse.png">
 
     <script src="src/plugins/ajax.js"></script>
     <script src="src/leaflet-src.js"></script>
@@ -30,21 +31,23 @@
     <script src="src/js/bootstrap.min.js"></script>
 
     <style>
-		.titre{
-			color:#310;
-		}
-		section{
-			text-align: justify;
-			vertical-align: top;
-			overflow-y:scroll
-		}
+        .titre {
+            color: #310;
+        }
+
+        section {
+            text-align: justify;
+            vertical-align: top;
+            overflow-y: scroll
+        }
+
     </style>
 
 </head>
 
 <body>
 
-    <ul>
+    <ul class="fixed-bottom">
         <li><a href="corona.html">Accueil</a></li>
         <li><a href="carte.html">Carte</a></li>
         <li><a href="stats.html">Stats</a></li>
@@ -53,74 +56,97 @@
     </ul>
 
 
-<div class="content " style="padding:20px;padding-top:60px; background:rgba(14, 19, 15, 0.1);height:100vh;overflow-y:auto">
-        <h3>BIENVENUE</h3>
-		 <section>
-                <h5 class=titre> RUBRIQUE ACTUALITE</h5>
-				<p><h5 class=titre>Covid-19</h5></p>
-                <p> Le Covid-19 est une maladie causée par le SRAS-CoV-2, un virus appartenant à la famille des coronavirus.
-				Très fréquents, ils peuvent bien provoquer un simple rhume comme une grave infection respiratoire de type pneumonie, 
-				à l’origine d’épidémies mortelles comme celles du SRAS, du Mers, et maintenant du Covid-19. </p>
-				<p><h5 class=titre>Mode de transmission </h5></p>
-                <p>Une espèce ("réservoir") héberge un virus sans être malade et le transmet à une autre espèce, qui le transmet ensuite à l'homme.
-				Dans les cas du SRAS-CoV-2, l'animal réservoir est la chauve-souris. Comme l’explique l’Inserm, « le virus est asymptomatique chez cet animal.
-				Un hôte intermédiaire est donc nécessaire à la transmission de ces virus à l’homme… ».
-				Dans le cas du SRAS-CoV-2, le pangolin pourrait être l’hôte intermédiaire et 
-				le vecteur de transmission du virus à l’homme.  </p>
-				<p>Les coronavirus se transmettent non seulement de l’animal à l’homme, mais également de l’homme à l’homme.
-				En ce qui concerne la  maladie du Covid-19, (anciennement appelée 2019-nCoV) due au SRAS-CoV-2, 
-				celle-ci se transmet par les postillons (gouttelettes de salive) projetés en toussant ou en éternuant. </P>
-				<p>Un des facteurs de transmission les plus importants semble être le contact des mains avec des surfaces infectées puis avec la bouche,
-				le nez ou les yeux. En fonction des températures et du taux d'humidité, le virus peut survivre quelques heures, voire quelques jours, 
-				sur diverses surfaces si elles ne sont pas désinfectées. Des études sont en cours pour préciser ces données. </P>
-				<p><h5 class=titre>Symptômes Covid-19</h5></p>
-				<p>Les symptômes les plus courants du virus sont une forte fièvre (supérieure à 37,5°C) et une toux sèche ou grasse. 
-				Certaines personnes peuvent également souffrir de courbatures, de maux de tête, d’une sensation d'oppression ou d’essoufflement.
-				Ces symptômes évoquent une infection respiratoire aiguë. Moins fréquents, 
-				la perte brutale de l’odorat et la perte du goût peuvent également présager de la maladie.</P>
-				<p>Dans les cas plus graves, l'infection peut en effet provoquer " une détresse respiratoire,
-				une insuffisance rénale aiguë, voire une défaillance multiviscérale pouvant entraîner la mort", indique la communauté scientifique.
-				Les difficultés respiratoires peuvent survenir après quelques jours de maladie et ce alors même que les premiers symptômes étaient bénins.
-				Par ailleurs, certains patients présentent une forme asymptomatique du virus : 
-				ils sont porteurs du virus, sans en déclarer les symptômes, mais ils sont contagieux et peuvent le transmettre.</P>
-				<p><h5 class=titre>Comment se protéger et protéger les autres</h5></p>
-                <p>Il est essentiel d'éviter de se toucher les yeux, le nez ou la bouche (qui sont des portes d'entrée
-				possibles du virus dans votre organisme) avec des mains sales. Les mesures dites "barrières" sont donc indispensables pour limiter l'impact du virus, notamment :
-				se laver fréquemment les mains avec du savon ou du gel hydroalcoolique,
-				éternuer et tousser dans son coude, utiliser des mouchoirs à usage unique, ne pas se serrer la main, ne pas faire la bise pour dire bonjour…</P>
-			    <p>Le Ministre de la Santé Publique recommande le port de masque que l’on présente ou pas des symptômes de la maladie. 
-				Toutefois, le meilleur moyen de s’en prémunir demeure de rester chez soi le plus longtemps possible,
-				et de ne sortir que si cela est réellement nécessaire.</P>
-			    <p><h5 class=titre>Traitement</h5></P>
-			    <p>Compte tenu des spécificités du Covid-19 (nouveau et spécifique), les vaccins contre la pneumonie ne protègent malheureusement pas contre le 
-				coronavirus. De ce fait, il faut élaborer un vaccin qui lui est propre. Des dizaines d’essais cliniques sont actuellement en cours et des tests sont
-				également menés pour évaluer l’efficacité de certains vaccins dans la lutte contre le nouveau coronavirus. En temps normal, le cycle de développement d’un vaccin prend plusieurs années. 
-				Toutefois dans le contexte actuel, les entreprises accélèrent le rythme de leurs recherches et raccourcissent les délais de mise au point.</P>
-				<p>Le traitement contre le nouveau coronavirus est dit symptomatique (il vise à soulager les symptômes) : 
-				médicaments contre la fièvre (paracétamol)… Dans les formes sévères, les personnes malades peuvent recevoir des 
-				antibiotiques lorsqu'une co-infection bactérienne est présente,
-				ou être mises sous assistance respiratoire…</P>
-				<p>Dans le cas de l’urgence sanitaire, certains gouvernements ont autorisé la prescription d’hydroxychloroquine, un antipaludique, 
-				comme médicament contre le Covid-19. Cependant, Les médecins engageront leur responsabilité en prescrivant ce médicament aux patients 
-				souffrant de formes graves du Covid-19. La délivrance d’un traitement associant lopinavir et ritonavir est également autorisée. </P>
-				<p>Cependant, l’usage d’anti-inflammatoires reste fortement déconseillé pour débuter un traitement, 
-				ou d’aspirine car pourrait aggraver l’état de santé des personnes atteintes du coronavirus. Toutefois, 
-				il reste fortement conseiller de prendre l’avis d’un médecin.</P>
-				<p><h5 class=titre>Demander une assistance</h5></P><P>
-				<p>Lorsque vous redoutez d’avoir les symptômes du Covid-19, appeler au 1510 et vous serrez reçu par le standard du Ministère de la Santé 
-				Public qui saura vous orienter dans votre processus de consultation et mise en hospitalisation si nécessaire ; et le cas échéant,
-				il saura quel protocole mettre en place pour encadrer le cas d’infection de votre domicile au centre hospitalier agrée... 
-				Il est recommandé de ne pas sortir de chez vous de peur de contaminer d’autres personnes sur votre trajet.</P>
-            </section>
+    <div class="content " style="padding:20px;padding-top:25px; background:rgba(14, 19, 15, 0.1);height:100vh;overflow-y:auto">
+        <div id="alert">
+            <center><b>Le port de Masques de Protection est désormais obligatoire au Cameroun.</b></center>
+        </div>
+        <h3>RUBRIQUE ACTUALITE</h3>
+        <section>
+            <p>
+                <h5 class=titre>Covid-19</h5>
+            </p>
+            <p> Le Covid-19 est une maladie causée par le SRAS-CoV-2, un virus appartenant à la famille des coronavirus.
+                Très fréquents, ils peuvent bien provoquer un simple rhume comme une grave infection respiratoire de type pneumonie,
+                à l’origine d’épidémies mortelles comme celles du SRAS, du Mers, et maintenant du Covid-19. </p>
+            <p>
+                <h5 class=titre>Mode de transmission </h5>
+            </p>
+            <p>Une espèce ("réservoir") héberge un virus sans être malade et le transmet à une autre espèce, qui le transmet ensuite à l'homme.
+                Dans les cas du SRAS-CoV-2, l'animal réservoir est la chauve-souris. Comme l’explique l’Inserm, « le virus est asymptomatique chez cet animal.
+                Un hôte intermédiaire est donc nécessaire à la transmission de ces virus à l’homme… ».
+                Dans le cas du SRAS-CoV-2, le pangolin pourrait être l’hôte intermédiaire et
+                le vecteur de transmission du virus à l’homme. </p>
+            <p>Les coronavirus se transmettent non seulement de l’animal à l’homme, mais également de l’homme à l’homme.
+                En ce qui concerne la maladie du Covid-19, (anciennement appelée 2019-nCoV) due au SRAS-CoV-2,
+                celle-ci se transmet par les postillons (gouttelettes de salive) projetés en toussant ou en éternuant. </P>
+            <p>Un des facteurs de transmission les plus importants semble être le contact des mains avec des surfaces infectées puis avec la bouche,
+                le nez ou les yeux. En fonction des températures et du taux d'humidité, le virus peut survivre quelques heures, voire quelques jours,
+                sur diverses surfaces si elles ne sont pas désinfectées. Des études sont en cours pour préciser ces données. </P>
+            <p>
+                <h5 class=titre>Symptômes Covid-19</h5>
+            </p>
+            <p>Les symptômes les plus courants du virus sont une forte fièvre (supérieure à 37,5°C) et une toux sèche ou grasse.
+                Certaines personnes peuvent également souffrir de courbatures, de maux de tête, d’une sensation d'oppression ou d’essoufflement.
+                Ces symptômes évoquent une infection respiratoire aiguë. Moins fréquents,
+                la perte brutale de l’odorat et la perte du goût peuvent également présager de la maladie.</P>
+            <p>Dans les cas plus graves, l'infection peut en effet provoquer " une détresse respiratoire,
+                une insuffisance rénale aiguë, voire une défaillance multiviscérale pouvant entraîner la mort", indique la communauté scientifique.
+                Les difficultés respiratoires peuvent survenir après quelques jours de maladie et ce alors même que les premiers symptômes étaient bénins.
+                Par ailleurs, certains patients présentent une forme asymptomatique du virus :
+                ils sont porteurs du virus, sans en déclarer les symptômes, mais ils sont contagieux et peuvent le transmettre.</P>
+            <p>
+                <h5 class=titre>Comment se protéger et protéger les autres</h5>
+            </p>
+            <p>Il est essentiel d'éviter de se toucher les yeux, le nez ou la bouche (qui sont des portes d'entrée
+                possibles du virus dans votre organisme) avec des mains sales. Les mesures dites "barrières" sont donc indispensables pour limiter l'impact du virus, notamment :
+                se laver fréquemment les mains avec du savon ou du gel hydroalcoolique,
+                éternuer et tousser dans son coude, utiliser des mouchoirs à usage unique, ne pas se serrer la main, ne pas faire la bise pour dire bonjour…</P>
+            <p>Le Ministre de la Santé Publique recommande le port de masque que l’on présente ou pas des symptômes de la maladie.
+                Toutefois, le meilleur moyen de s’en prémunir demeure de rester chez soi le plus longtemps possible,
+                et de ne sortir que si cela est réellement nécessaire.</P>
+            <p>
+                <h5 class=titre>Traitement</h5>
+            </P>
+            <p>Compte tenu des spécificités du Covid-19 (nouveau et spécifique), les vaccins contre la pneumonie ne protègent malheureusement pas contre le
+                coronavirus. De ce fait, il faut élaborer un vaccin qui lui est propre. Des dizaines d’essais cliniques sont actuellement en cours et des tests sont
+                également menés pour évaluer l’efficacité de certains vaccins dans la lutte contre le nouveau coronavirus. En temps normal, le cycle de développement d’un vaccin prend plusieurs années.
+                Toutefois dans le contexte actuel, les entreprises accélèrent le rythme de leurs recherches et raccourcissent les délais de mise au point.</P>
+            <p>Le traitement contre le nouveau coronavirus est dit symptomatique (il vise à soulager les symptômes) :
+                médicaments contre la fièvre (paracétamol)… Dans les formes sévères, les personnes malades peuvent recevoir des
+                antibiotiques lorsqu'une co-infection bactérienne est présente,
+                ou être mises sous assistance respiratoire…</P>
+            <p>Dans le cas de l’urgence sanitaire, certains gouvernements ont autorisé la prescription d’hydroxychloroquine, un antipaludique,
+                comme médicament contre le Covid-19. Cependant, Les médecins engageront leur responsabilité en prescrivant ce médicament aux patients
+                souffrant de formes graves du Covid-19. La délivrance d’un traitement associant lopinavir et ritonavir est également autorisée. </P>
+            <p>Cependant, l’usage d’anti-inflammatoires reste fortement déconseillé pour débuter un traitement,
+                ou d’aspirine car pourrait aggraver l’état de santé des personnes atteintes du coronavirus. Toutefois,
+                il reste fortement conseiller de prendre l’avis d’un médecin.</P>
+            <p>
+                <h5 class=titre>Demander une assistance</h5>
+            </P>
+            <P>
+                <p>Lorsque vous redoutez d’avoir les symptômes du Covid-19, appeler au 1510 et vous serrez reçu par le standard du Ministère de la Santé
+                    Public qui saura vous orienter dans votre processus de consultation et mise en hospitalisation si nécessaire ; et le cas échéant,
+                    il saura quel protocole mettre en place pour encadrer le cas d’infection de votre domicile au centre hospitalier agrée...
+                    Il est recommandé de ne pas sortir de chez vous de peur de contaminer d’autres personnes sur votre trajet.</P>
+        </section>
 
         <p>Les prochaines mises à jour seront disponibles très bientôt</p>
 
+        <div id="alert">
+            <center>Vous pensez avoir les symptômes du Covid-19?</center>
+            <center><b>Appelez Immédiatement le 1510</b></center>
+            <center><b>...</b></center>
+            <center><b>.</b></center>
+        </div>
+
     </div>
-	
+
+
     <script>
         $(document).ready(function() {
             function isMobile() {
-                if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
+                if (/alcatel|amoi|android|avantgo|blackberry|benq|cell|cricket|docomo|elaine|htc|iemobile|iphone|ipad|ipaq|ipod|j2me|java|midp|mini|mmp|mobi|motorola|nec-|nokia|palm|panasonic|philips|phone|sagem|sharp|sie-|smartphone|sony|symbian|t-mobile|telus|up\.browser|up\.link|vodafone|wap|webos|wireless|xda|xoom|zte|BB|PlayBook|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
                     return true;
                 } else {
                     return false;

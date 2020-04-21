@@ -1,0 +1,108 @@
+body {
+  background-image: url("img/corona.png");
+  background-repeat: repeat-y;
+  background-size: cover;
+}
+
+#navimg1 {
+  position: absolute;
+  top: -54px;
+  left: 144px;
+  height: 95px;
+  z-index: 0;
+  opacity: 13;
+  filter: blur(3px);
+}
+#navimg2 {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  height: 105px;
+  z-index: 0;
+  opacity: 13;
+  filter: blur(1px);
+}
+
+.content {
+  /* padding: 20px;
+  padding-top: 60px; */
+  background-color: #1e1e1e;
+
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.nav-container {
+  padding: 10px 0 5px 10px;
+  display: flex;
+  flex-direction: column !important;
+  justify-content: start;
+  background-color: hsla(0, 0%, 100%, 0.24);
+  color: rgb(255, 255, 255);
+}
+
+span {
+  font-size: 12px;
+  display: block;
+}
+
+.acceuil-content {
+  position: relative;
+  top: 86px;
+}
+.card {
+  min-height: 108px;
+  background-color: #1e1e1e;
+  color: rgb(255, 255, 255);
+  border: 1px solid rgba(255, 255, 255, 0.125);
+}
+
+.card-body {
+  padding: 0.3rem;
+}
+
+.card-title {
+  margin-bottom: 0.5rem;
+  margin-top: 5px;
+}
+.card-text:last-child {
+  padding-top: 12px;
+}
+
+.case-home {
+  margin-right: 10px;
+  color: #ea8c35;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 60px;
+  line-height: 41px;
+}
+
+.victim-home {
+  margin-right: 10px;
+  color: #b50122;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 60px;
+  line-height: 41px;
+}
+
+.recover-home {
+  color: #08725f;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 60px;
+  line-height: 41px;
+}
+
+.Region-home {
+  color: #999999;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 60px;
+  line-height: 41px;
+}

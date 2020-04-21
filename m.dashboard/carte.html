@@ -2,10 +2,10 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
 
-    <title>CORONA MOBILE</title>
+    <title>COVID-19 Cameroun</title>
     <link rel="stylesheet" href="src/leaflet.css" />
     <link rel="stylesheet" href="src/css/bootstrap-grid.min.css" />
     <link rel="stylesheet" href="src/css/bootstrap.min.css" />
@@ -17,7 +17,10 @@
     <link rel="stylesheet" href="src/plugins/MarkerCluster.css" />
     <link rel="stylesheet" href="src/plugins/MarkerCluster.Default.css" />
     <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="src/plugins/easy-button.css">
+    <link rel="shortcut icon" sizes="196x196" href="img/icone_georesponse.png">
 
+    <script src="src/plugins/easy-button.js"></script>
     <script src="src/plugins/ajax.js"></script>
     <script src="src/leaflet-src.js"></script>
     <script src="src/jquery-3.2.0.min.js"></script>
@@ -33,7 +36,7 @@
         #mapdiv {
             height: 93vh;
             position: relative;
-            top: 50px;
+            margin-bottom: 50px;
         }
 
         /* popups */
@@ -56,31 +59,28 @@
         }
 
         .popup-content {
-            border-top: 1px solid #C4C4C4;
-            border-bottom: 1px solid #C4C4C4
+            border-top: 1px solid #c4c4c4;
+            border-bottom: 1px solid #c4c4c4;
         }
 
         .leaflet-popup-content-wrapper,
         .leaflet-popup-tip {
-            background: #ECECEC;
+            background: #ececec;
             color: #333;
             box-shadow: 0 3px 14px rgba(0, 0, 0, 0.4);
         }
 
     </style>
-
 </head>
 
 <body>
-
-    <ul>
+    <ul class="fixed-bottom">
         <li><a href="corona.html">Accueil</a></li>
         <li><a class="active" href="#">Carte</a></li>
         <li><a href="stats.html">Stats</a></li>
         <li><a href="graphes.html">Graphes</a></li>
         <li><a href="actu.html">Actu</a></li>
     </ul>
-
 
     <div id="mapdiv"></div>
 
@@ -101,6 +101,8 @@
         var lyrMarkerCluster;
         var ctlsidebar;
         var ctleasybutton;
+        var mkr_MyLocation;
+        var lyrPrecisionLocation;
 
         //couches vecteurs
         var lyrregion;
@@ -118,11 +120,13 @@
         var icnLAMpolice;
         var icnLAMpharmacie;
 
-
         $(document).ready(function() {
-
             function isMobile() {
-                if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
+                if (
+                    /Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(
+                        navigator.userAgent
+                    )
+                ) {
                     return true;
                 } else {
                     return false;
@@ -130,7 +134,11 @@
             }
 
             if (!isMobile()) {
-                if (confirm("Ceci n'est pas un appareil mobile\n\nSouhaitez-vous plutôt ouvrir la version ordinateur de l'application ?")) {
+                if (
+                    confirm(
+                        "Ceci n'est pas un appareil mobile\n\nSouhaitez-vous plutôt ouvrir la version ordinateur de l'application ?"
+                    )
+                ) {
                     window.location.href = "../dashboard/corona.html";
                 }
             }
@@ -139,87 +147,91 @@
             northEast_bnd = L.latLng(16, 8);
             bounds = L.latLngBounds(southWest_bnd, northEast_bnd);
 
-            mymap = L.map('mapdiv', {
+            mymap = L.map("mapdiv", {
                 center: [5.659719, 13.066939],
                 zoom: 5,
                 maxZoom: 19,
                 minZoom: 5,
-                maxBounds: bounds
+                maxBounds: bounds,
             });
 
-
-            lyrOSM = L.tileLayer.provider("OpenStreetMap.Mapnik");
+            lyrOSM = L.tileLayer.provider("OpenStreetMap.Mapnik").addTo(mymap);
             lyrImageryEsri = L.tileLayer.provider("Esri.WorldImagery");
             lyrOSM2 = L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}.png");
             lyrImageryGoogle = L.tileLayer(
                 "http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}", {
                     maxzoom: 20,
-                    subdomains: ["mt0", "mt1", "mt2", "mt3"]
+                    subdomains: ["mt0", "mt1", "mt2", "mt3"],
                 }
             );
             lyrImageryEsri_gray = L.tileLayer(
                 "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}", {
                     attribution: "Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ",
-                    maxZoom: 20
+                    maxZoom: 20,
                 }
             );
 
             miniMapCtl = new L.Control.MiniMap(lyrOSM2, {
-                toggleDisplay: true
+                toggleDisplay: true,
+                minimized: true,
+                width: 100,
+                height: 100
             }).addTo(mymap);
 
             objBasemaps = {
                 "Open Street Maps": lyrOSM,
                 "Imagerie Satelitte Esri": lyrImageryEsri,
                 "Esri gray": lyrImageryEsri_gray,
-                "Imagerie Satelitte google": lyrImageryGoogle
+                "Imagerie Satelitte google": lyrImageryGoogle,
             };
 
             objOverlays = {};
 
-            ctlLayers = L.control.layers(objBasemaps, objOverlays, {
-                position: 'topright'
-            }).addTo(mymap);
+            ctlLayers = L.control
+                .layers(objBasemaps, objOverlays, {
+                    position: "topright",
+                })
+                .addTo(mymap);
 
             //Marker icon
             icnLAMclinique = L.AwesomeMarkers.icon({
                 icon: "glyphicon-plus-sign",
                 markerColor: "red",
                 iconColor: "white",
-                prefix: "glyphicon"
+                prefix: "glyphicon",
             });
 
             icnLAMhotel = L.AwesomeMarkers.icon({
                 icon: "hotel",
                 markerColor: "blue",
                 iconColor: "red",
-                prefix: "fa"
+                prefix: "fa",
             });
 
             icnLAMpolice = L.AwesomeMarkers.icon({
                 icon: "glyphicon-star",
                 markerColor: "orange",
                 iconColor: "red",
-                prefix: "glyphicon"
+                prefix: "glyphicon",
             });
 
             icnLAMhopitaux = L.AwesomeMarkers.icon({
                 icon: "h-square",
                 markerColor: "blue",
                 iconColor: "white",
-                prefix: "fa"
+                prefix: "fa",
             });
 
             icnLAMpharmacie = L.AwesomeMarkers.icon({
                 icon: "glyphicon-plus",
                 markerColor: "white",
                 iconColor: "green",
-                prefix: "glyphicon"
+                prefix: "glyphicon",
             });
 
             //cluster
             lyrMarkerCluster = L.markerClusterGroup({
-                disableClusteringAtZoom: 17
+                disableClusteringAtZoom: 17,
             });
 
             function refreshclinique() {
@@ -233,7 +245,7 @@
                         lyrclinique = L.geoJSON(JSON.parse(response), {
                             pointToLayer: function(feature, latlng) {
                                 return L.marker(latlng, {
-                                    icon: icnLAMclinique
+                                    icon: icnLAMclinique,
                                 });
                             },
                             onEachFeature: function(feature, layer) {
@@ -245,10 +257,10 @@
                                     " </span> </h6>";
 
                                 layer.bindPopup(String(strbuildingInfo));
-                            }
+                            },
                         });
                         lyrMarkerCluster.addLayer(lyrclinique);
-                    }
+                    },
                 });
             }
 
@@ -263,7 +275,7 @@
                         lyrhotel = L.geoJSON(JSON.parse(response), {
                             pointToLayer: function(feature, latlng) {
                                 return L.marker(latlng, {
-                                    icon: icnLAMhotel
+                                    icon: icnLAMhotel,
                                 });
                             },
                             onEachFeature: function(feature, layer) {
@@ -275,10 +287,10 @@
                                     " </span> </h6>";
 
                                 layer.bindPopup(String(strbuildingInfo));
-                            }
+                            },
                         });
                         lyrMarkerCluster.addLayer(lyrhotel);
-                    }
+                    },
                 });
             }
 
@@ -293,7 +305,7 @@
                         lyrpharmacie = L.geoJSON(JSON.parse(response), {
                             pointToLayer: function(feature, latlng) {
                                 return L.marker(latlng, {
-                                    icon: icnLAMpharmacie
+                                    icon: icnLAMpharmacie,
                                 });
                             },
 
@@ -306,10 +318,10 @@
                                     " </span> </h6>";
 
                                 layer.bindPopup(String(strbuildingInfo));
-                            }
+                            },
                         });
                         lyrMarkerCluster.addLayer(lyrpharmacie);
-                    }
+                    },
                 });
             }
 
@@ -324,7 +336,7 @@
                         lyrhopitaux = L.geoJSON(JSON.parse(response), {
                             pointToLayer: function(feature, latlng) {
                                 return L.marker(latlng, {
-                                    icon: icnLAMhopitaux
+                                    icon: icnLAMhopitaux,
                                 });
                             },
                             onEachFeature: function(feature, layer) {
@@ -336,10 +348,10 @@
                                     " </span> </h6> ";
 
                                 layer.bindPopup(String(strbuildingInfo));
-                            }
+                            },
                         });
                         lyrMarkerCluster.addLayer(lyrhopitaux);
-                    }
+                    },
                 });
             }
 
@@ -354,7 +366,7 @@
                         lyrpolice = L.geoJSON(JSON.parse(response), {
                             pointToLayer: function(feature, latlng) {
                                 return L.marker(latlng, {
-                                    icon: icnLAMpolice
+                                    icon: icnLAMpolice,
                                 });
                             },
 
@@ -367,105 +379,146 @@
                                     " </span> </h6> ";
 
                                 layer.bindPopup(String(strbuildingInfo));
-                            }
+                            },
                         });
                         lyrMarkerCluster.addLayer(lyrpolice);
                         lyrMarkerCluster.addTo(mymap);
-                    }
+                    },
                 });
             }
 
 
             function refreshregion() {
                 $.ajax({
-                    url: 'php/load_region.php',
-                    type: 'POST',
+                    url: "php/load_region.php",
+                    type: "POST",
                     success: function(response) {
                         if (lyrregion) {
-                            mymap.removeLayer(lyrregion)
-                        };
+                            mymap.removeLayer(lyrregion);
+                        }
                         lyrregion = L.geoJSON(JSON.parse(response), {
                             style: function(feature) {
                                 switch (feature.properties.niveau_contamination) {
                                     case 0:
                                         return {
-                                            "color": "#265500",
-                                            "weight": 2,
-                                            "fillOpacity": 0.35,
-                                            "fillColor": "#265500"
+                                            color: "#265500",
+                                                weight: 2,
+                                                fillOpacity: 0.35,
+                                                fillColor: "#265500",
                                         };
                                     case 1:
                                         return {
-                                            "color": "#508104",
-                                            "weight": 2,
-                                            "fillOpacity": 0.35,
-                                            "fillColor": "#508104"
+                                            color: "#508104",
+                                                weight: 2,
+                                                fillOpacity: 0.35,
+                                                fillColor: "#508104",
                                         };
                                     case 2:
                                         return {
-                                            "color": "#9E8E01",
-                                            "weight": 2,
-                                            "fillOpacity": 0.35,
-                                            "fillColor": "#9E8E01"
+                                            color: "#9E8E01",
+                                                weight: 2,
+                                                fillOpacity: 0.35,
+                                                fillColor: "#9E8E01",
                                         };
                                     case 3:
                                         return {
-                                            "color": "#F3B800",
-                                            "weight": 2,
-                                            "fillOpacity": 0.35,
-                                            "fillColor": "#F3B800"
+                                            color: "#F3B800",
+                                                weight: 2,
+                                                fillOpacity: 0.35,
+                                                fillColor: "#F3B800",
                                         };
                                     case 4:
                                         return {
-                                            "color": "#DB8200",
-                                            "weight": 2,
-                                            "fillOpacity": 0.35,
-                                            "fillColor": "#DB8200"
+                                            color: "#DB8200",
+                                                weight: 2,
+                                                fillOpacity: 0.35,
+                                                fillColor: "#DB8200",
                                         };
                                     case 5:
                                         return {
-                                            "color": "#B64201",
-                                            "weight": 2,
-                                            "fillOpacity": 0.35,
-                                            "fillColor": "#B64201"
+                                            color: "#B64201",
+                                                weight: 2,
+                                                fillOpacity: 0.35,
+                                                fillColor: "#B64201",
                                         };
                                 }
                             },
                             onEachFeature: function(feature, layer) {
-
-                                var strbuildingInfo = "<div class ='popup-content'><h6 style='text-align:center;font-weight:bold'>INFORMATIONS</h6></div>"
-                                strbuildingInfo += "<div class = 'popup-content'><h6> <span style='font-weight:bold'>Région :</span> <span>" + feature.properties.name + " </span> </h6></div>"
-                                strbuildingInfo += "<div class = 'popup-content'><h6> <span style='font-weight:bold'>Population :</span> <span>" + feature.properties.pop_estim_2020 + " </span> </h6> </div>"
-                                strbuildingInfo += "<div class = 'popup-content'><h6> <span style='font-weight:bold'>Nombre de cas:</span> <span style='color:orange'>" + feature.properties.nombre_total_de_cas + " </span> </h6> </div>"
-                                strbuildingInfo += "<div class = 'popup-content'><h6> <span style='font-weight:bold'>Nombre de victimes:</span> <span style='color:red'>" + feature.properties.nombre_de_victimes + " </span> </h6> </div>"
-                                strbuildingInfo += "<div class = 'popup-content'><h6> <span style='font-weight:bold'>Personnes rétablies:</span> <span style='color:green'>" + feature.properties.nombre_de_personnes_retablies + " </span> </h6> </div> "
+                                var strbuildingInfo =
+                                    "<div class ='popup-content'><h6 style='text-align:center;font-weight:bold'>INFORMATIONS</h6></div>";
+                                strbuildingInfo +=
+                                    "<div class = 'popup-content'><h6> <span style='font-weight:bold'>Région :</span> <span>" +
+                                    feature.properties.name +
+                                    " </span> </h6></div>";
+                                strbuildingInfo +=
+                                    "<div class = 'popup-content'><h6> <span style='font-weight:bold'>Population :</span> <span>" +
+                                    feature.properties.pop_estim_2020 +
+                                    " </span> </h6> </div>";
+                                strbuildingInfo +=
+                                    "<div class = 'popup-content'><h6> <span style='font-weight:bold'>Nombre de cas:</span> <span style='color:orange'>" +
+                                    feature.properties.nombre_total_de_cas +
+                                    " </span> </h6> </div>";
+                                strbuildingInfo +=
+                                    "<div class = 'popup-content'><h6> <span style='font-weight:bold'>Nombre de victimes:</span> <span style='color:red'>" +
+                                    feature.properties.nombre_de_victimes +
+                                    " </span> </h6> </div>";
+                                strbuildingInfo +=
+                                    "<div class = 'popup-content'><h6> <span style='font-weight:bold'>Personnes rétablies:</span> <span style='color:green'>" +
+                                    feature.properties.nombre_de_personnes_retablies +
+                                    " </span> </h6> </div> ";
 
                                 layer.bindPopup(String(strbuildingInfo));
-                            }
-                        })
+                            },
+                        });
                         lyrregion.addTo(mymap);
-
-                    }
+                    },
                 });
-
             }
+
             refreshclinique();
             refreshhotel();
             refreshpharmacie();
             refreshphoptiaux();
             refreshpolice();
             refreshregion();
-            //intergration side bar dans plugin
-            ctlsidebar = L.control.sidebar("sidebar").addTo(mymap);
 
-            // easy_bouton pour montrer ou cacher le side bar
-            ctleasybutton = L.easyButton("glyphicon-transfer", function() {
-                ctlsidebar.toggle();
+
+            // easy_bouton pour geolocaliser
+            MyLocation = L.easyButton('glyphicon-map-marker', function() {
+                mymap.locate({
+                    setView: true,
+                    maxZoom: 18,
+                    enableHighAccuracy: true,
+                });
             }).addTo(mymap);
+
+
+            function onLocationFound(e) {
+                var radius = e.accuracy;
+                if (mkr_MyLocation) {
+                    mymap.removeLayer(mkr_MyLocation)
+                };
+                if (lyrPrecisionLocation) {
+                    mymap.removeLayer(lyrPrecisionLocation)
+                };
+
+                mkr_MyLocation = L.marker(e.latlng).addTo(mymap)
+                    .bindPopup(" Voici votre position estimée à +/- " + radius + " m").openPopup();
+
+                lyrPrecisionLocation = L.circle(e.latlng, radius).addTo(mymap);
+            }
+
+            mymap.on('locationfound', onLocationFound);
+
+            function onLocationError(e) {
+                alert(e.message);
+            }
+
+            map.on('locationerror', onLocationError);
+
         });
 
     </script>
-
 </body>
 
 </html>

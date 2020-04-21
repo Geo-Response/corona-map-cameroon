@@ -2,32 +2,26 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
 
-    <title>CORONA MOBILE</title>
+    <title>COVID-19 Cameroun</title>
     <link rel="stylesheet" href="src/css/bootstrap-grid.min.css" />
     <link rel="stylesheet" href="src/css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/styles.css" />
+    <link rel="shortcut icon" sizes="196x196" href="img/icone_georesponse.png">
 
     <script src="src/plugins/ajax.js"></script>
     <script src="src/jquery-3.2.0.min.js"></script>
     <script src="src/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
+    <script type="text/javascript"></script>
 
-
-    </script>
-
-    <style>
-
-    </style>
-
+    <style></style>
 </head>
 
 <body>
-
-    <ul>
+    <ul class="fixed-bottom">
         <li><a href="corona.html">Accueil</a></li>
         <li><a href="carte.html">Carte</a></li>
         <li><a href="stats.html">Stats</a></li>
@@ -35,29 +29,36 @@
         <li><a href="actu.html">Actu</a></li>
     </ul>
 
-
-    <div class="content " style="padding:20px;padding-top:60px; background:rgba(14, 19, 15, 0.3);height:100vh;overflow-y:auto">
-        <div id="pieChart_region" style="width: 100%;height: 75%">
+    <div class="content" style="
+        padding: 20px;
+        padding-bottom: 0px;
+        margin-bottom: 50px;
+        background: rgba(14, 19, 15, 0.3);
+        height: 100vh;
+        overflow-y: auto;
+      ">
+        <div id="pieChart_region" style="width: 100%; height: 75%;">
             <p>Génération du graphique</p>
-            <p>Veuillez patienter quelques instants... </p>
+            <p>Veuillez patienter 10 à 12 secondes s'il vous plait...</p>
         </div>
-        <div id="columnChart_Global" style="width: 100%;height: 75%">
+        <div id="columnChart_Global" style="width: 100%; height: 75%;">
             <p>Génération du graphique</p>
-            <p>Veuillez patienter quelques instants... </p>
+            <p>Veuillez patienter 10 à 12 secondes s'il vous plait...</p>
         </div>
-        <div id="LineChart_Global_Evolution" style="width: 100%;height: 75%">
+        <div id="LineChart_Global_Evolution" style="width: 100%; height: 75%;">
             <p>Génération du graphique</p>
-            <p>Veuillez patienter quelques instants... </p>
+            <p>Veuillez patienter 10 à 12 secondes s'il vous plait...</p>
         </div>
     </div>
-
-
-
 
     <script>
         $(document).ready(function() {
             function isMobile() {
-                if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
+                if (
+                    /Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(
+                        navigator.userAgent
+                    )
+                ) {
                     return true;
                 } else {
                     return false;
@@ -65,15 +66,18 @@
             }
 
             if (!isMobile()) {
-                if (confirm("Ceci n'est pas un appareil mobile\n\nSouhaitez-vous plutôt ouvrir la version ordinateur de l'application ?")) {
+                if (
+                    confirm(
+                        "Ceci n'est pas un appareil mobile\n\nSouhaitez-vous plutôt ouvrir la version ordinateur de l'application ?"
+                    )
+                ) {
                     window.location.href = "../dashboard/corona.html";
                 }
             }
 
-            google.charts.load('current', {
-                'packages': ['corechart']
+            google.charts.load("current", {
+                packages: ["corechart"],
             });
-
 
             //pie chart des cas dans les regions du cameroun
             google.charts.setOnLoadCallback(drawPieChartRegion);
@@ -82,18 +86,24 @@
                 var jsonData = $.ajax({
                     url: "php/pie_chart_region.php",
                     dataType: "json",
-                    async: false
+                    async: false,
                 }).responseText;
-                var data = google.visualization.arrayToDataTable($.parseJSON(jsonData));
+                var data = google.visualization.arrayToDataTable(
+                    $.parseJSON(jsonData)
+                );
 
                 var options = {
-                    title: ' DISTRIBITION DES CAS RECENSÉS PAR REGION AU CAMEROUN'
+                    title: " DISTRIBUTION DES CAS RECENSÉS PAR REGION AU CAMEROUN",
+                    legend: {
+                        position: "bottom",
+                    },
+
                 };
-                var chart = new google.visualization.PieChart(document.getElementById('pieChart_region'));
+                var chart = new google.visualization.PieChart(
+                    document.getElementById("pieChart_region")
+                );
                 chart.draw(data, options);
             }
-
-
 
             //Column chart de la repartition cas,victimes et guerris dans le cameroun
             //            google.charts.setOnLoadCallback(drawColumnChartGlobal);
@@ -130,7 +140,6 @@
             //                chart.draw(data, options);
             //            }
 
-
             //Column chart de la repartition cas,victimes et guerris dans le cameroun
             google.charts.setOnLoadCallback(drawColumnChartGlobal);
 
@@ -138,21 +147,23 @@
                 var jsonData = $.ajax({
                     url: "php/column_chart_last6_case_day.php",
                     dataType: "json",
-                    async: false
+                    async: false,
                 }).responseText;
                 var table = JSON.parse(jsonData);
                 var data = google.visualization.arrayToDataTable(table);
                 var options = {
-                    title: 'NOUVEAUX CAS RECENSÉS DES 6 DERNIERS JOURS',
+                    title: "NOUVEAUX CAS RECENSÉS DES 6 DERNIERS JOURS",
                     bar: {
-                        groupWidth: "95%"
+                        groupWidth: "95%",
                     },
                     legend: {
-                        position: "none"
+                        position: "bottom",
                     },
                 };
 
-                var chart = new google.visualization.ColumnChart(document.getElementById('columnChart_Global'));
+                var chart = new google.visualization.ColumnChart(
+                    document.getElementById("columnChart_Global")
+                );
                 chart.draw(data, options);
             }
 
@@ -163,29 +174,28 @@
                 var jsonData = $.ajax({
                     url: "php/line_chart_evolution_global.php",
                     dataType: "json",
-                    async: false
+                    async: false,
                 }).responseText;
                 var data = new google.visualization.DataTable();
-                data.addColumn('string', 'Jour');
-                data.addColumn('number', 'Nombre de cas');
+                data.addColumn("string", "Jour");
+                data.addColumn("number", "Nombre de cas");
                 var table = JSON.parse(jsonData);
                 data.addRows(table);
 
                 var options = {
-                    title: 'COURBE D EVOLUTION DU NOMBRE TOTAL DE CONTAMINATION AU CAMEROUN'
+                    title: "COURBE D EVOLUTION DU NOMBRE TOTAL DE CONTAMINATION AU CAMEROUN",
+                    legend: {
+                        position: "bottom",
+                    },
                 };
-                var chart = new google.visualization.LineChart(document.getElementById('LineChart_Global_Evolution'));
+                var chart = new google.visualization.LineChart(
+                    document.getElementById("LineChart_Global_Evolution")
+                );
                 chart.draw(data, options);
             }
-
-
-
-
-
-        })
+        });
 
     </script>
-
 </body>
 
 </html>

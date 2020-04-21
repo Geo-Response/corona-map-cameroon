@@ -1,53 +1,68 @@
 body {
-    margin: 0;
-    overflow-x: hidden
+  margin: 0;
+  overflow-x: hidden;
 }
 
 ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #565656;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 5;
-
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #565656;
+  /* position: fixed; */
+  /* top: 0; */
+  width: 100%;
+  /* z-index: 5; */
 }
 
 li {
-    float: left;
-    width: 20vw;
-    border-right: 1px solid #bbb;
-
-
+  float: left;
+  width: 20vw;
+  border-right: 1px solid #bbb;
 }
 
 li a {
-    display: block;
-    color: #FFC800;
-    text-align: center;
+  display: block;
+  color: #ffc800;
+  text-align: center;
 
-    font-size: 15px;
-    padding: 14px 10px;
-    text-decoration: none;
+  font-size: 15px;
+  padding: 14px 10px;
+  text-decoration: none;
 }
 
 li a:hover:not(.active) {
-    background-color: #111;
-    text-decoration: none
+  background-color: #111;
+  text-decoration: none;
+}
+
+/*front color text animation*/
+#alert {color: #39f !important;}
+@-webkit-keyframes colours {
+      0% {color: #39f;}
+     25% {color: #8bc5d1;}
+     50% {color: #f8cb4a;}
+     75% {color: #8bc5d1;}
+    100% {color: #39f;}
+
+}
+#alert {
+    -webkit-animation-direction: normal;
+    -webkit-animation-duration: 10s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-name: colours;
+    -webkit-animation-timing-function: ease;
 }
 
 .active {
-    background-color: #FFC800;
-    color: #1E1E1E;
-    text-decoration: none
+  background-color: #ffc800;
+  color: #1e1e1e;
+  text-decoration: none;
 }
 
 /* zoomcontrol */
 
 .leaflet-bar a {
-    background-color: black;
-    color: #FFC800
+  background-color: black;
+  color: #ffc800;
 }
