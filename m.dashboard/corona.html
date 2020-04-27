@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi"
-    />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
 
     <title>COVID-19 Cameroun</title>
 
@@ -18,94 +16,109 @@
 
     <script src="src/jquery-3.2.0.min.js"></script>
     <script src="src/js/bootstrap.min.js"></script>
-  </head>
+</head>
 
-  <body>
+<body>
     <img id="navimg1" src="img/corona.png" alt="" />
     <img id="navimg2" src="img/corona.png" alt="" />
-                        <!-- Nav Bar -->
+    <!-- Nav Bar -->
     <nav class="fixed-top">
-      <div class="nav-container">
-      <span>COVID-19 2019-ncov</span>
-        <span>COVID-19</span>
-        <span>Nouveau Corona Virus</span>
-          <span>Geo-response</span>
+        <div class="nav-container">
+            <span>COVID-19 2019-ncov</span>
+            <span>COVID-19</span>
+            <span>Nouveau Corona Virus</span>
+            <span>Geo-response</span>
         </div>
-        
+
     </nav>
     <div class="content">
-      <div class="acceuil-content">
-        <div class="card">
-            <div class="card-body text-center">
-              <h5 class="card-title">Cas</h5>
-              
-              <h1 class="card-text case-home">1163</h1>
-              
+        <div class="acceuil-content">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Cas</h5>
+
+                    <h1 class="card-text case-home">...</h1>
+
+                </div>
             </div>
-          </div>
-          <div class="card text-center">
-            <div class="card-body">
-              <h5 class="card-title">Rétablis</h5>
-              
-              <h1 class="card-text recover-home">329</h1>
-              
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">Rétablis</h5>
+
+                    <h1 class="card-text recover-home">...</h1>
+
+                </div>
             </div>
-          </div>
-          <div class="card text-center">
-            <div class="card-body">
-              <h5 class="card-title">Victimes</h5>
-              
-              <h1 class="card-text victim-home">43</h1>
-              
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">Victimes</h5>
+
+                    <h1 class="card-text victim-home">...</h1>
+
+                </div>
             </div>
-          </div>
-          <div class="card">
-            <div class="card-body text-center">
-              <h1 class="card-text Region-home">7</h1>
-              <h5 class="card-title ">Regions Touchées</h5>
+            <div class="card">
+                <div class="card-body text-center">
+                    <h1 class="card-text Region-home">09</h1>
+                    <h5 class="card-title ">Regions Touchées</h5>
+                </div>
             </div>
-          </div>
-	<div id="alert">
-		<br>
-        <center><b>ANNONCE DE DERNIERE MINUTE</b></center>
-		<center><b>Le port de Masques de Protection est désormais obligatoire au Cameroun.</b></center>
-	</div>
-    </div>
+            <div id="alert">
+                <br>
+                <center><b>ANNONCE DE DERNIERE MINUTE</b></center>
+                <center><b>Le port de Masques de Protection est désormais obligatoire au Cameroun.</b></center>
+            </div>
+        </div>
     </div>
 
     <ul class="fixed-bottom">
-      <li><a class="active" href="#">Accueil</a></li>
-      <li><a href="carte.html">Carte</a></li>
-      <li><a href="stats.html">Stats</a></li>
-      <li><a href="graphes.html">Graphes</a></li>
-      <li><a href="actu.html">Actu</a></li>
+        <li><a class="active" href="#">Accueil</a></li>
+        <li><a href="carte.html">Carte</a></li>
+        <li><a href="stats.html">Stats</a></li>
+        <li><a href="graphes.html">Graphes</a></li>
+        <li><a href="actu.html">Actu</a></li>
     </ul>
 
-    
-    <script>
-      $(document).ready(function () {
-        function isMobile() {
-          if (
-            /alcatel|amoi|android|avantgo|blackberry|benq|cell|cricket|docomo|elaine|htc|iemobile|iphone|ipad|ipaq|ipod|j2me|java|midp|mini|mmp|mobi|motorola|nec-|nokia|palm|panasonic|philips|phone|sagem|sharp|sie-|smartphone|sony|symbian|t-mobile|telus|up\.browser|up\.link|vodafone|wap|webos|wireless|xda|xoom|zte|BB|PlayBook|Windows Phone|Kindle|Silk|Opera Mini/i.test(
-              navigator.userAgent
-            )
-          ) {
-            return true;
-          } else {
-            return false;
-          }
-        }
 
-        if (!isMobile()) {
-          if (
-            confirm(
-              "Ceci n'est pas un appareil mobile\n\nSouhaitez-vous plutôt ouvrir la version ordinateur de l'application ?"
-            )
-          ) {
-            window.location.href = "../dashboard/corona.html";
-          }
-        }
-      });
+    <script>
+        $(document).ready(function() {
+            function isMobile() {
+                if (
+                    /alcatel|amoi|android|avantgo|blackberry|benq|cell|cricket|docomo|elaine|htc|iemobile|iphone|ipad|ipaq|ipod|j2me|java|midp|mini|mmp|mobi|motorola|nec-|nokia|palm|panasonic|philips|phone|sagem|sharp|sie-|smartphone|sony|symbian|t-mobile|telus|up\.browser|up\.link|vodafone|wap|webos|wireless|xda|xoom|zte|BB|PlayBook|Windows Phone|Kindle|Silk|Opera Mini/i.test(
+                        navigator.userAgent
+                    )
+                ) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
+            if (!isMobile()) {
+                if (
+                    confirm(
+                        "Ceci n'est pas un appareil mobile\n\nSouhaitez-vous plutôt ouvrir la version ordinateur de l'application ?"
+                    )
+                ) {
+                    window.location.href = "../dashboard/corona.html";
+                }
+            }
+
+            $.getJSON("php/region_sum.php", function(data) {
+                var datas = [];
+                $.each(data, function(key, val) {
+                    datas.push(val);
+                });
+                $(".case-home").html(datas[0]);
+                $(".recover-home").html(datas[1]);
+                $(".victim-home").html(datas[2]);
+            });
+
+
+
+        });
+
     </script>
-  </body>
+</body>
+
 </html>
