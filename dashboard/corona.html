@@ -76,7 +76,12 @@
         }
 
         .card-header {
-            background-color: #1e1e1e
+            background-color: #1e1e1e;
+            height: 55px;
+        }
+
+        #accordion {
+            height: 100%
         }
 
         .titre {
@@ -263,7 +268,7 @@
                                 Chargement des départements affectés ... </div>
                         </div>
                     </div>
-					
+
                     <div class="card">
                         <div class="card-header">
                             <a class="card-link collapsed" data-toggle="collapse" href="#adamaoua" aria-expanded="false">
@@ -276,6 +281,54 @@
                         <div id="adamaoua" class="collapse" data-parent="#accordion">
                             <div id="table_adamaoua" class="card-body">
                                 Chargement des départements affectés ... </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <a class="card-link collapsed" data-toggle="collapse" href="#nordouest" aria-expanded="false">
+                                NORD-OUEST:
+                            </a>
+                            <span id="C_nordouest" class="case"> 00</span>
+                            <span id="V_nordouest" class="victim"> 00</span>
+                            <span id="R_nordouest" class="recover"> 00</span>
+                        </div>
+                        <div id="nordouest" class="collapse" data-parent="#accordion">
+                            <div id="table_nordouest" class="card-body">
+                                Aucune informations disponibles pour le moment
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <a class="card-link collapsed" data-toggle="collapse" href="#nord" aria-expanded="false">
+                                NORD:
+                            </a>
+                            <span id="C_nord" class="case"> 00</span>
+                            <span id="V_nord" class="victim"> 00</span>
+                            <span id="R_nord" class="recover"> 00</span>
+                        </div>
+                        <div id="nord" class="collapse" data-parent="#accordion">
+                            <div id="table_nord" class="card-body">
+                                Aucune informations disponibles pour le moment
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <a class="card-link collapsed" data-toggle="collapse" href="#extremenord" aria-expanded="false">
+                                EXTREME-NORD:
+                            </a>
+                            <span id="C_extremenord" class="case"> 00</span>
+                            <span id="V_extremenord" class="victim"> 00</span>
+                            <span id="R_extremenord" class="recover"> 00</span>
+                        </div>
+                        <div id="extremenord" class="collapse" data-parent="#accordion">
+                            <div id="table_extremenord" class="card-body">
+                                Aucune informations disponibles pour le moment
+                            </div>
                         </div>
                     </div>
 
@@ -361,11 +414,13 @@
                         Il est recommandé de ne pas sortir de chez vous de peur de contaminer d’autres personnes sur votre trajet.</P>
             </section>
         </div>
+        <!--
         <div class="sidebar-sticky">
             <aside>
                 <h5> GRAPHS</h5>
             </aside>
         </div>
+-->
     </nav>
 
 
@@ -499,6 +554,26 @@
                 $("#R_adamaoua").html(datas[2]);
             });
 
+            $.getJSON("php/nord_sum.php", function(data) {
+                var datas = [];
+                $.each(data, function(key, val) {
+                    datas.push(val);
+                });
+                $("#C_nord").html(datas[0]);
+                $("#V_nord").html(datas[1]);
+                $("#R_nord").html(datas[2]);
+            });
+
+            $.getJSON("php/nordouest_sum.php", function(data) {
+                var datas = [];
+                $.each(data, function(key, val) {
+                    datas.push(val);
+                });
+                $("#C_nordouest").html(datas[0]);
+                $("#V_nordouest").html(datas[1]);
+                $("#R_nordouest").html(datas[2]);
+            });
+
             $.getJSON("php/region_sum.php", function(data) {
                 var datas = [];
                 $.each(data, function(key, val) {
@@ -603,6 +678,30 @@
             };
 
             table_adamaoua();
+
+            function table_nord() {
+                $.ajax({
+                    url: "php/table_nord.php",
+                    type: "POST",
+                    success: function(response) {
+                        $("#table_nord").html(response);
+                    },
+                });
+            }
+
+            table_nord();
+
+            function table_nordouest() {
+                $.ajax({
+                    url: "php/table_nordouest.php",
+                    type: "POST",
+                    success: function(response) {
+                        $("#table_nordouest").html(response);
+                    },
+                });
+            }
+
+            table_nordouest();
 
             //cartographique
             southWest_bnd = L.latLng(1, 17);
