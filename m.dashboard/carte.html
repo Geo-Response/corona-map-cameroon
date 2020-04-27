@@ -494,7 +494,7 @@
 
 
             function onLocationFound(e) {
-                var radius = e.accuracy;
+                var radius = e.accuracy.toFixed();
                 if (mkr_MyLocation) {
                     mymap.removeLayer(mkr_MyLocation)
                 };
