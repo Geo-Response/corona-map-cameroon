@@ -37,43 +37,19 @@
         height: 100vh;
         overflow-y: auto;
       ">
-        <div id="pieChart_region" style="width: 100%; height: 75%;">
-            <p>Génération du graphique</p>
-            <p>Veuillez patienter 10 à 12 secondes s'il vous plait...</p>
+        <div>
+            <p>Evolution Globale de la Maladie</p>
+			<iframe style="width:100%"; width="560" height="392" src="https://coronavirus.app/chart/8C0d7WVCjyUGtnc2gUAR/recovered?embed=true" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
-        <div id="columnChart_Global" style="width: 100%; height: 75%;">
-            <p>Génération du graphique</p>
-            <p>Veuillez patienter 10 à 12 secondes s'il vous plait...</p>
-        </div>
-        <div id="LineChart_Global_Evolution" style="width: 100%; height: 75%;">
-            <p>Génération du graphique</p>
-            <p>Veuillez patienter 10 à 12 secondes s'il vous plait...</p>
-        </div>
+        <div>
+            <p>Diagramme d'Evolution par Cas</p>
+			<iframe style="width:100%"; width="560" height="392" src="https://coronavirus.app/chart/8C0d7WVCjyUGtnc2gUAR/dead/new?embed=true" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+		</div>
     </div>
 
     <script>
         $(document).ready(function() {
-            function isMobile() {
-                if (
-                    /Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(
-                        navigator.userAgent
-                    )
-                ) {
-                    return true;
-                } else {
-                    return false;
-                }
-            }
-
-            if (!isMobile()) {
-                if (
-                    confirm(
-                        "Ceci n'est pas un appareil mobile\n\nSouhaitez-vous plutôt ouvrir la version ordinateur de l'application ?"
-                    )
-                ) {
-                    window.location.href = "../dashboard/corona.html";
-                }
-            }
+           
 
             google.charts.load("current", {
                 packages: ["corechart"],
