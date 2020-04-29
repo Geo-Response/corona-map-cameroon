@@ -31,35 +31,31 @@
         </div>
 
     </nav>
-    <div class="content">
+    <div id="outer" class="content">
         <div class="acceuil-content">
             <div class="card">
                 <div class="card-body text-center">
-                    <h5 class="card-title">Cas</h5>
-
-                    <h1 class="card-text case-home">...</h1>
-
+                    <h5 id="inner" class="card-title">Cas</h5>
+			<!--<div id="shiva"><span class="count">1120</span></div>-->
+                    <h1 id="inner" class="card-text case-home count">1806</h1>
                 </div>
             </div>
             <div class="card text-center">
                 <div class="card-body">
                     <h5 class="card-title">Rétablis</h5>
-
-                    <h1 class="card-text recover-home">...</h1>
-
+                    <h1 class="card-text recover-home count">915</h1>
                 </div>
             </div>
-            <div class="card text-center">
+            <div id="inner" class="card text-center">
                 <div class="card-body">
                     <h5 class="card-title">Victimes</h5>
-
-                    <h1 class="card-text victim-home">...</h1>
-
+                    <h1 class="card-text victim-home count2">59</h1>
                 </div>
             </div>
-            <div class="card">
+            <div id="inner" class="card">
                 <div class="card-body text-center">
-                    <h1 class="card-text Region-home">09</h1>
+				<br >
+                    <h1 class="card-text Region-home count2">9</h1>
                     <h5 class="card-title ">Regions Touchées</h5>
                 </div>
             </div>
@@ -104,8 +100,10 @@
                 }
             }
 
+
             $.getJSON("php/region_sum.php", function(data) {
-                var datas = [];
+			
+			var datas = [];
                 $.each(data, function(key, val) {
                     datas.push(val);
                 });
@@ -113,9 +111,33 @@
                 $(".recover-home").html(datas[1]);
                 $(".victim-home").html(datas[2]);
             });
-
-
-
+				//script t count values 
+				$('.count').each(function () {
+				$(this).prop('Counter',0).animate({
+					Counter: $(this).html()
+				}, {
+						duration: 5000,
+						easing: 'swing',
+						step: function (now) {
+						$(this).text(Math.ceil(now));
+						}
+					});
+				});
+				
+				
+				//script t count2 values 
+				$('.count2').each(function () {
+				$(this).prop('Counter',0).animate({
+					Counter: $(this).html()
+				}, {
+						duration: 6000,
+						easing: 'swing',
+						step: function (now) {
+						$(this).text(Math.ceil(now));
+						}
+					});
+				});
+				      
         });
 
     </script>
