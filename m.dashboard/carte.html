@@ -7,6 +7,7 @@
 
     <title>COVID-19 Cameroun</title>
     <link rel="stylesheet" href="src/leaflet.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="src/css/bootstrap-grid.min.css" />
     <link rel="stylesheet" href="src/css/bootstrap.min.css" />
     <link rel="stylesheet" href="src/plugins/Control.MiniMap.css" />
@@ -72,6 +73,36 @@
             box-shadow: 0 3px 14px rgba(0, 0, 0, 0.4);
         }
 
+        .leaflet-touch .leaflet-bar button {
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            padding: 1px;
+        }
+
+        .material-icons {
+            font-family: 'Material Icons';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 28px;
+            line-height: 1;
+        }
+
+        .material-icons.simple_position {
+            color: blue;
+            background-color: #9c9c9c;
+        }
+
+        .material-icons.location_on {
+            color: green;
+            background-color: #9c9c9c;
+        }
+
+        .material-icons.location_off {
+            color: red;
+            background-color: #9c9c9c;
+        }
+
     </style>
 </head>
 
@@ -106,6 +137,8 @@
         var mkr_MyLocation;
         var lyrPrecisionLocation;
         var CtrlSearch;
+        var intPosition;
+
 
         //couches vecteurs
         var lyrregion;
@@ -173,12 +206,13 @@
 					L.mask = function (latLngs, options) {
 						return new L.Mask(latLngs, options);
 					};
+
 			
             //cartographique
             southWest_bnd = L.latLng(1, 17);
             northEast_bnd = L.latLng(16, 8);
             bounds = L.latLngBounds(southWest_bnd, northEast_bnd);
-
+			
 			var lat = 5.659719;
 			var lng =  13.066939;
             mymap = L.map("mapdiv", {
@@ -204,7 +238,7 @@
                     maxZoom: 20,
                 }
             );
-			//
+			
 			// Polygon created with http://geojson.io/
 			var cameroun = {
 				"type": "FeatureCollection",
@@ -244,8 +278,11 @@
 							};
 						}
 				//ajout de la couche dans le canvas de la carte
-};				var mabordure = new L.geoJson(cameroun.features,options).addTo(mymap);
-				
+				};				
+				var mabordure = new L.geoJson(cameroun.features,options).addTo(mymap);
+
+			
+
             miniMapCtl = new L.Control.MiniMap(lyrOSM2, {
                 toggleDisplay: true,
                 minimized: true,
@@ -569,21 +606,47 @@
                 }, 5000)
 
             };
+            var MyLocation = L.easyButton('<i class="material-icons simple_position">gps_fixed</i>', function() {
+                mymap.locate({
+                    setView: true,
+                    maxZoom: 19,
+                    enableHighAccuracy: true,
+                })
+            }).addTo(mymap);
 
-            MyLocation = L.easyButton('glyphicon-map-marker', function() {
-                Locate();
+            var MyLocationTracking = L.easyButton({
+                states: [{
+                        stateName: 'Demarrer',
+                        icon: '<i class="material-icons location_on">location_on</i>',
+                        title: 'Demarrer le tracking',
+                        onClick: function(control) {
+                            Locate();
+                            control.state('Arreter');
+                        }
+                    },
+                    {
+                        stateName: 'Arreter',
+                        icon: '<i class="material-icons location_off">location_off</i>',
+                        title: 'Stopper le tracking',
+                        onClick: function(control) {
+                            clearInterval(intPosition);
+                            control.state('Demarrer');
+                        }
+                    }
+                ]
             }).addTo(mymap);
 
 
-            function onLocationFound(e) {
-                var radius = e.accuracy.toFixed();
-                if (mkr_MyLocation) {
-                    mymap.removeLayer(mkr_MyLocation)
-                };
-                if (lyrPrecisionLocation) {
-                    mymap.removeLayer(lyrPrecisionLocation)
-                };
 
+
+            function onLocationFound(e) {
+                //                var radius = e.accuracy.toFixed();
+                // if (mkr_MyLocation) {
+                // mymap.removeLayer(mkr_MyLocation)
+                // };
+                // if (lyrPrecisionLocation) {
+                // mymap.removeLayer(lyrPrecisionLocation)
+                // };
                 mkr_MyLocation = L.marker(e.latlng).addTo(mymap)
                 //                    .bindPopup(" Voici votre position estimée à +/- " + radius + " m").openPopup();
 
@@ -592,11 +655,11 @@
 
             mymap.on('locationfound', onLocationFound);
 
-            function onLocationError(e) {
-                alert(e.message);
-            }
+            //            function onLocationError(e) {
+            //                alert(e.message);
+            //            }
 
-            mymap.on('locationerror', onLocationError);
+            // mymap.on('locationerror', onLocationError);
 
             CtrlSearch = L.Control.openCageSearch().addTo(mymap);
 
