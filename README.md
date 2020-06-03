@@ -51,7 +51,7 @@ With this app, the user is able to
 1. [Ali Nsapamong (Lead - BackEnd)](https://www.linkedin.com/in/mohamed-ali-ii-nsapamom-kouotou-937a0017a/)
 2. [Loic Kami](https://www.linkedin.com/in/lo%C3%AFc-kami-m-24b71a180/)
 3. [Theryx Ndouken (Lead - FrontEnd)](https://www.linkedin.com/in/ndoukentheryx/)
-4. [Maurice Junior]
+4. [Maurice Junior](https://github.com/Tchangue)
 
 ### Data Visualization and Deployment
 1. [Aris Pamen (Lead)](https://www.linkedin.com/in/aristide-pamen-9658a314a/)
