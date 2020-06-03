@@ -25,10 +25,13 @@ With this app, the user is able to
   - The user can also see a small mini map showing at a large scale where he is
 4. **In the section 4**, 
   - The user can see simultaneously what he saw in the mobile version in section 2, 3 and 6
-5. **In the 5th section** (not displayed in the image)
+  
+![Preview](/im/corona-map-2.png)
+
+5. **In the 5th section** 
   - The user can see all graphs representing the live ploting of the evolution of the Covid-19 in Cameroon (All cases, recovered and deaths)
   - The user can also see all previous results
-6. **In the 6th section** (not displayed in the above image),
+6. **In the 6th section**
   - The user has all knows informations about the Covid-19, the transmission mode, how to avoid it, etc.
   
 > In case of any issue, please send us an email : contact@geo-advantage.com / contact@homemadeschool.org
