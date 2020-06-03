@@ -36,7 +36,7 @@ With this app, the user is able to
   
 ## Contributors
 ### Data Collection
-1. [Bruno Nzeusseu (Lead)](https://www.linkedin.com/in/bruno-wilfried-nzesseu-0a96b214a)
+1. [Bruno Nzesseu (Lead)](https://www.linkedin.com/in/bruno-wilfried-nzesseu-0a96b214a)
 2. [Ivan Chimi](https://www.linkedin.com/in/ivan-capwell-chimi-kadjou-b02a23184/)
 3. [Claudette Petgang](https://www.linkedin.com/in/kolos-petgang-1556a414a/)
 4. [Constanting Ngono](https://www.linkedin.com/in/constantin-romain-ngono-257781159/)
