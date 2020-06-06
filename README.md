@@ -35,6 +35,11 @@ With this app, the user is able to
   - The user has all knows informations about the Covid-19, the transmission mode, how to avoid it, etc.
   
 ## Contributors
+
+### Supervisors
+1. [Andre Junior BIDJOGO BESSALA](https://www.linkedin.com/in/andre-junior-bidjogo-bessala-b582a3bb/)
+2. [Micarel Tchuisse](https://www.linkedin.com/in/tchuisse-micarel-85b540164/)
+
 ### Data Collection
 1. [Bruno Nzesseu (Lead)](https://www.linkedin.com/in/bruno-wilfried-nzesseu-0a96b214a)
 2. [Ivan Chimi](https://www.linkedin.com/in/ivan-capwell-chimi-kadjou-b02a23184/)
