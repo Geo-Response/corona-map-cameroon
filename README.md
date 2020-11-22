@@ -37,7 +37,7 @@ With this app, the user is able to
 ## Contributors
 
 ### Product Manager 
- [Yannick Arthur DOUNGMO](https://www.linkedin.com/in/yannick-doungmo/)
+   [Yannick Arthur DOUNGMO](https://www.linkedin.com/in/yannick-doungmo/)
 
 ### Field Supervisors
 1. [Andre Junior BIDJOGO BESSALA](https://www.linkedin.com/in/andre-junior-bidjogo-bessala-b582a3bb/)
